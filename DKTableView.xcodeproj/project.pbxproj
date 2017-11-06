@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		757B3AE9977FCF4213B60B95 /* Pods_DKTableViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374D168046B9B5E26DF6FE5F /* Pods_DKTableViewTests.framework */; };
 		A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDC91FAFF0F200D45610 /* AppDelegate.m */; };
 		A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDCC1FAFF0F200D45610 /* ViewController.m */; };
 		A96DEDD01FAFF0F200D45610 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDCE1FAFF0F200D45610 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		A96DEDD51FAFF0F200D45610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */; };
 		A96DEDD81FAFF0F200D45610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDD71FAFF0F200D45610 /* main.m */; };
 		A96DEDE21FAFF0F200D45610 /* DKTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */; };
+		CC5A69D3C4DC4E85FF23375B /* Pods_DKTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		374D168046B9B5E26DF6FE5F /* Pods_DKTableViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51570AB34C67852BB082CA90 /* Pods-DKTableView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableView.release.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView.release.xcconfig"; sourceTree = "<group>"; };
+		79EA034885530F17FB5FF7B4 /* Pods-DKTableViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D6B3DECD0F6DF9FC9FBCA1F /* Pods-DKTableView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView.debug.xcconfig"; sourceTree = "<group>"; };
+		8DBD91384B4A7D20821C235F /* Pods-DKTableViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		A96DEDC51FAFF0F200D45610 /* DKTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDC81FAFF0F200D45610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A96DEDC91FAFF0F200D45610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,6 +47,7 @@
 		A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKTableViewTests.m; sourceTree = "<group>"; };
 		A96DEDE31FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5A69D3C4DC4E85FF23375B /* Pods_DKTableView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +63,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757B3AE9977FCF4213B60B95 /* Pods_DKTableViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03226B6423C1F260603E8016 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */,
+				374D168046B9B5E26DF6FE5F /* Pods_DKTableViewTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4888B97097A01515A1E81719 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D6B3DECD0F6DF9FC9FBCA1F /* Pods-DKTableView.debug.xcconfig */,
+				51570AB34C67852BB082CA90 /* Pods-DKTableView.release.xcconfig */,
+				79EA034885530F17FB5FF7B4 /* Pods-DKTableViewTests.debug.xcconfig */,
+				8DBD91384B4A7D20821C235F /* Pods-DKTableViewTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A96DEDBC1FAFF0F200D45610 = {
 			isa = PBXGroup;
 			children = (
 				A96DEDC71FAFF0F200D45610 /* DKTableView */,
 				A96DEDE01FAFF0F200D45610 /* DKTableViewTests */,
 				A96DEDC61FAFF0F200D45610 /* Products */,
+				4888B97097A01515A1E81719 /* Pods */,
+				03226B6423C1F260603E8016 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,9 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A96DEDE61FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableView" */;
 			buildPhases = (
+				5ECE8684E00C79A305DCC0C5 /* [CP] Check Pods Manifest.lock */,
 				A96DEDC11FAFF0F200D45610 /* Sources */,
 				A96DEDC21FAFF0F200D45610 /* Frameworks */,
 				A96DEDC31FAFF0F200D45610 /* Resources */,
+				E08DC3A07A13D2DB82CBC5FB /* [CP] Embed Pods Frameworks */,
+				796D4EC596D7F7E839C15798 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A96DEDE91FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableViewTests" */;
 			buildPhases = (
+				D6AFEF629CA37253D7FC3C8F /* [CP] Check Pods Manifest.lock */,
 				A96DEDD91FAFF0F200D45610 /* Sources */,
 				A96DEDDA1FAFF0F200D45610 /* Frameworks */,
 				A96DEDDB1FAFF0F200D45610 /* Resources */,
+				CFA93664A0D281622651FD97 /* [CP] Embed Pods Frameworks */,
+				1492E24B6EFB0DC3220F4B39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,6 +237,112 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1492E24B6EFB0DC3220F4B39 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5ECE8684E00C79A305DCC0C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DKTableView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		796D4EC596D7F7E839C15798 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CFA93664A0D281622651FD97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6AFEF629CA37253D7FC3C8F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DKTableViewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E08DC3A07A13D2DB82CBC5FB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A96DEDC11FAFF0F200D45610 /* Sources */ = {
@@ -355,11 +499,13 @@
 		};
 		A96DEDE71FAFF0F200D45610 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D6B3DECD0F6DF9FC9FBCA1F /* Pods-DKTableView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6PTG33TQCL;
 				INFOPLIST_FILE = DKTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,12 +517,14 @@
 		};
 		A96DEDE81FAFF0F200D45610 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51570AB34C67852BB082CA90 /* Pods-DKTableView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 6PTG33TQCL;
 				INFOPLIST_FILE = DKTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,6 +536,7 @@
 		};
 		A96DEDEA1FAFF0F200D45610 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79EA034885530F17FB5FF7B4 /* Pods-DKTableViewTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -403,6 +552,7 @@
 		};
 		A96DEDEB1FAFF0F200D45610 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DBD91384B4A7D20821C235F /* Pods-DKTableViewTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
