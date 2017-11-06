@@ -15,6 +15,7 @@
 		A96DEDD51FAFF0F200D45610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */; };
 		A96DEDD81FAFF0F200D45610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDD71FAFF0F200D45610 /* main.m */; };
 		A96DEDE21FAFF0F200D45610 /* DKTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */; };
+		A971F7051FB0491100A8D8A7 /* UITableView+DKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */; };
 		CC5A69D3C4DC4E85FF23375B /* Pods_DKTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,9 @@
 		A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKTableViewTests.m; sourceTree = "<group>"; };
 		A96DEDE31FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A971F7031FB0491100A8D8A7 /* UITableView+DKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DKCategory.h"; sourceTree = "<group>"; };
+		A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DKCategory.m"; sourceTree = "<group>"; };
+		A971F7071FB0493F00A8D8A7 /* DKTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewDelegate.h; sourceTree = "<group>"; };
 		CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,7 @@
 		A96DEDC71FAFF0F200D45610 /* DKTableView */ = {
 			isa = PBXGroup;
 			children = (
+				A971F7061FB0492300A8D8A7 /* Protocol */,
 				A9F04B141FAFF65F00181E94 /* Category */,
 				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
 				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
@@ -136,9 +141,19 @@
 			path = DKTableViewTests;
 			sourceTree = "<group>";
 		};
+		A971F7061FB0492300A8D8A7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A971F7071FB0493F00A8D8A7 /* DKTableViewDelegate.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		A9F04B141FAFF65F00181E94 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A971F7031FB0491100A8D8A7 /* UITableView+DKCategory.h */,
+				A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -361,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A971F7051FB0491100A8D8A7 /* UITableView+DKCategory.m in Sources */,
 				A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */,
 				A96DEDD81FAFF0F200D45610 /* main.m in Sources */,
 				A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */,
