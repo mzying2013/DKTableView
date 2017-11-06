@@ -7,7 +7,50 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DKTableViewDelegate.h"
+
+typedef NS_ENUM(NSInteger,DKActiveStatu){
+    DKDefaultActiveStatus = 0,
+    DKInitLodingActiveStatus,
+    DKHeaderRefreshActiveStatus,
+    DKFooterRefreshActiveStatus,
+    DKEmptyActiveStatus,
+    DKErrorActiveStatus,
+    DKLoadNoMoreActiveStatus,
+    DKLoadHaveMoreActiveStatus
+};
+
 
 @interface UITableView (DKCategory)
+/**
+ 活跃状态，默认为DKDefaultActiveStatus
+ */
+@property (nonatomic,assign) DKActiveStatu dk_activeStatus;
+
+/**
+ 当前页码
+ */
+@property (nonatomic,assign,readonly) NSInteger dk_pageIndex;
+
+
+/**
+ Delegat回调
+ */
+@property (nonatomic,weak) id<DKTableViewDelegate> dk_delegate;
+
+
+/**
+ 是否启用下拉刷新，默认值NO
+ */
+@property (nonatomic,assign) BOOL dk_enableHeaderRefresh;
+
+
+/**
+ 是否启用上拉刷新，默认值NO
+ */
+@property (nonatomic,assign) BOOL dk_enableFooterRefresh;
+
+
+
 
 @end

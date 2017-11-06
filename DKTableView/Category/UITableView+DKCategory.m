@@ -8,6 +8,14 @@
 
 #import "UITableView+DKCategory.h"
 
+
+
 @implementation UITableView (DKCategory)
+
+
+#pragma mark - Property Method
+-(NSInteger)dk_pageIndex{
+    return 0;
+}
 
 @end

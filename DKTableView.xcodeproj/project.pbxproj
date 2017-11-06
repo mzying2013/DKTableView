@@ -51,6 +51,7 @@
 		A971F7031FB0491100A8D8A7 /* UITableView+DKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DKCategory.h"; sourceTree = "<group>"; };
 		A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DKCategory.m"; sourceTree = "<group>"; };
 		A971F7071FB0493F00A8D8A7 /* DKTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewDelegate.h; sourceTree = "<group>"; };
+		A971F7081FB0503700A8D8A7 /* DKTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewHeader.h; sourceTree = "<group>"; };
 		CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +120,7 @@
 			children = (
 				A971F7061FB0492300A8D8A7 /* Protocol */,
 				A9F04B141FAFF65F00181E94 /* Category */,
+				A971F7081FB0503700A8D8A7 /* DKTableViewHeader.h */,
 				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
 				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
 				A96DEDCB1FAFF0F200D45610 /* ViewController.h */,
