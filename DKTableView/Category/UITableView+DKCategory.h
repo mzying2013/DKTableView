@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DKTableViewDelegate.h"
 
-typedef NS_ENUM(NSInteger,DKActiveStatu){
+typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKDefaultActiveStatus = 0,
     DKInitLodingActiveStatus,
     DKHeaderRefreshActiveStatus,
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger,DKActiveStatu){
 /**
  活跃状态，默认为DKDefaultActiveStatus
  */
-@property (nonatomic,assign) DKActiveStatu dk_activeStatus;
+@property (nonatomic,assign) DKActiveStatus dk_activeStatus;
 
 /**
  当前页码
