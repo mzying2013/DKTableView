@@ -152,7 +152,7 @@
 				TargetAttributes = {
 					A96DEDC41FAFF0F200D45610 = {
 						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					A96DEDDC1FAFF0F200D45610 = {
 						CreatedOnToolsVersion = 9.1;
@@ -357,13 +357,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDABRPW7UB;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6PTG33TQCL;
 				INFOPLIST_FILE = DKTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "fa712333-24da-4b58-8fc9-8f06a2e4fe35";
+				PROVISIONING_PROFILE_SPECIFIER = DevWildcardProfiles;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -371,13 +373,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YDABRPW7UB;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6PTG33TQCL;
 				INFOPLIST_FILE = DKTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "6743a549-6f60-4b72-a21a-201914ea4c63";
+				PROVISIONING_PROFILE_SPECIFIER = DisWildcardProfiles;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
