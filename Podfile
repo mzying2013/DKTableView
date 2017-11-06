@@ -8,6 +8,7 @@ target 'DKTableView' do
     pod 'MJRefresh'
     pod 'DZNEmptyDataSet'
     pod 'Masonry'
+    pod 'MBProgressHUD'
 
   # Pods for DKTableView
 
