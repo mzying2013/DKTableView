@@ -113,6 +113,7 @@
 		A96DEDC71FAFF0F200D45610 /* DKTableView */ = {
 			isa = PBXGroup;
 			children = (
+				A9F04B141FAFF65F00181E94 /* Category */,
 				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
 				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
 				A96DEDCB1FAFF0F200D45610 /* ViewController.h */,
@@ -133,6 +134,13 @@
 				A96DEDE31FAFF0F200D45610 /* Info.plist */,
 			);
 			path = DKTableViewTests;
+			sourceTree = "<group>";
+		};
+		A9F04B141FAFF65F00181E94 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +335,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DKTableView/Pods-DKTableView-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -334,6 +343,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
