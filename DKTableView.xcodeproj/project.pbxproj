@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDC91FAFF0F200D45610 /* AppDelegate.m */; };
+		A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDCC1FAFF0F200D45610 /* ViewController.m */; };
+		A96DEDD01FAFF0F200D45610 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDCE1FAFF0F200D45610 /* Main.storyboard */; };
+		A96DEDD21FAFF0F200D45610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD11FAFF0F200D45610 /* Assets.xcassets */; };
+		A96DEDD51FAFF0F200D45610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */; };
+		A96DEDD81FAFF0F200D45610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDD71FAFF0F200D45610 /* main.m */; };
+		A96DEDE21FAFF0F200D45610 /* DKTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A96DEDDE1FAFF0F200D45610 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A96DEDBD1FAFF0F200D45610 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A96DEDC41FAFF0F200D45610;
+			remoteInfo = DKTableView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A96DEDC51FAFF0F200D45610 /* DKTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A96DEDC81FAFF0F200D45610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A96DEDC91FAFF0F200D45610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A96DEDCB1FAFF0F200D45610 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A96DEDCC1FAFF0F200D45610 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A96DEDCF1FAFF0F200D45610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A96DEDD11FAFF0F200D45610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A96DEDD41FAFF0F200D45610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A96DEDD61FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A96DEDD71FAFF0F200D45610 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKTableViewTests.m; sourceTree = "<group>"; };
+		A96DEDE31FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A96DEDC21FAFF0F200D45610 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A96DEDDA1FAFF0F200D45610 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A96DEDBC1FAFF0F200D45610 = {
+			isa = PBXGroup;
+			children = (
+				A96DEDC71FAFF0F200D45610 /* DKTableView */,
+				A96DEDE01FAFF0F200D45610 /* DKTableViewTests */,
+				A96DEDC61FAFF0F200D45610 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A96DEDC61FAFF0F200D45610 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A96DEDC51FAFF0F200D45610 /* DKTableView.app */,
+				A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A96DEDC71FAFF0F200D45610 /* DKTableView */ = {
+			isa = PBXGroup;
+			children = (
+				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
+				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
+				A96DEDCB1FAFF0F200D45610 /* ViewController.h */,
+				A96DEDCC1FAFF0F200D45610 /* ViewController.m */,
+				A96DEDCE1FAFF0F200D45610 /* Main.storyboard */,
+				A96DEDD11FAFF0F200D45610 /* Assets.xcassets */,
+				A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */,
+				A96DEDD61FAFF0F200D45610 /* Info.plist */,
+				A96DEDD71FAFF0F200D45610 /* main.m */,
+			);
+			path = DKTableView;
+			sourceTree = "<group>";
+		};
+		A96DEDE01FAFF0F200D45610 /* DKTableViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */,
+				A96DEDE31FAFF0F200D45610 /* Info.plist */,
+			);
+			path = DKTableViewTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A96DEDC41FAFF0F200D45610 /* DKTableView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A96DEDE61FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableView" */;
+			buildPhases = (
+				A96DEDC11FAFF0F200D45610 /* Sources */,
+				A96DEDC21FAFF0F200D45610 /* Frameworks */,
+				A96DEDC31FAFF0F200D45610 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DKTableView;
+			productName = DKTableView;
+			productReference = A96DEDC51FAFF0F200D45610 /* DKTableView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A96DEDDC1FAFF0F200D45610 /* DKTableViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A96DEDE91FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableViewTests" */;
+			buildPhases = (
+				A96DEDD91FAFF0F200D45610 /* Sources */,
+				A96DEDDA1FAFF0F200D45610 /* Frameworks */,
+				A96DEDDB1FAFF0F200D45610 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A96DEDDF1FAFF0F200D45610 /* PBXTargetDependency */,
+			);
+			name = DKTableViewTests;
+			productName = DKTableViewTests;
+			productReference = A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A96DEDBD1FAFF0F200D45610 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = bill;
+				TargetAttributes = {
+					A96DEDC41FAFF0F200D45610 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					A96DEDDC1FAFF0F200D45610 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A96DEDC41FAFF0F200D45610;
+					};
+				};
+			};
+			buildConfigurationList = A96DEDC01FAFF0F200D45610 /* Build configuration list for PBXProject "DKTableView" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A96DEDBC1FAFF0F200D45610;
+			productRefGroup = A96DEDC61FAFF0F200D45610 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A96DEDC41FAFF0F200D45610 /* DKTableView */,
+				A96DEDDC1FAFF0F200D45610 /* DKTableViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A96DEDC31FAFF0F200D45610 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96DEDD51FAFF0F200D45610 /* LaunchScreen.storyboard in Resources */,
+				A96DEDD21FAFF0F200D45610 /* Assets.xcassets in Resources */,
+				A96DEDD01FAFF0F200D45610 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A96DEDDB1FAFF0F200D45610 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A96DEDC11FAFF0F200D45610 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */,
+				A96DEDD81FAFF0F200D45610 /* main.m in Sources */,
+				A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A96DEDD91FAFF0F200D45610 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A96DEDE21FAFF0F200D45610 /* DKTableViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A96DEDDF1FAFF0F200D45610 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A96DEDC41FAFF0F200D45610 /* DKTableView */;
+			targetProxy = A96DEDDE1FAFF0F200D45610 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A96DEDCE1FAFF0F200D45610 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A96DEDCF1FAFF0F200D45610 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A96DEDD41FAFF0F200D45610 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A96DEDE41FAFF0F200D45610 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A96DEDE51FAFF0F200D45610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A96DEDE71FAFF0F200D45610 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABRPW7UB;
+				INFOPLIST_FILE = DKTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A96DEDE81FAFF0F200D45610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABRPW7UB;
+				INFOPLIST_FILE = DKTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A96DEDEA1FAFF0F200D45610 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABRPW7UB;
+				INFOPLIST_FILE = DKTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DKTableView.app/DKTableView";
+			};
+			name = Debug;
+		};
+		A96DEDEB1FAFF0F200D45610 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YDABRPW7UB;
+				INFOPLIST_FILE = DKTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mzying.DKTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DKTableView.app/DKTableView";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A96DEDC01FAFF0F200D45610 /* Build configuration list for PBXProject "DKTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96DEDE41FAFF0F200D45610 /* Debug */,
+				A96DEDE51FAFF0F200D45610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A96DEDE61FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96DEDE71FAFF0F200D45610 /* Debug */,
+				A96DEDE81FAFF0F200D45610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A96DEDE91FAFF0F200D45610 /* Build configuration list for PBXNativeTarget "DKTableViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A96DEDEA1FAFF0F200D45610 /* Debug */,
+				A96DEDEB1FAFF0F200D45610 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A96DEDBD1FAFF0F200D45610 /* Project object */;
+}
