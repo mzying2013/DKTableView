@@ -13,14 +13,28 @@
 
 static const void * kWeakObjectContainerKey = &kWeakObjectContainerKey;
 static const void * kActiveStatusKey = &kActiveStatusKey;
+static const void * kPageIndexKey = &kPageIndexKey;
+static const void * kEnableHeaderRefreshKey = &kEnableHeaderRefreshKey;
+static const void * kEnableFooterRefreshKey = &kEnableFooterRefreshKey;
+
 
 
 @implementation UITableView (DKCategory)
 
+#pragma mark - Private Property Method
+-(NSInteger)privateDKPageIndex{
+    NSNumber * index = objc_getAssociatedObject(self, kPageIndexKey);
+    return [index integerValue];
+}
 
 
+-(void)setPrivateDKPageIndex:(NSInteger)privateDKPageIndex{
+    NSNumber * index = [NSNumber numberWithInteger:privateDKPageIndex];
+    objc_setAssociatedObject(self, kPageIndexKey, index, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
-#pragma mark - Property Method
+
+#pragma mark - Public Property Method
 - (id<DKTableViewDelegate>)dk_delegate{
     DKWeakObjectContainer *container = objc_getAssociatedObject(self,kWeakObjectContainerKey);
     return container.weakObject;
@@ -47,9 +61,35 @@ static const void * kActiveStatusKey = &kActiveStatusKey;
 }
 
 
-
 -(NSInteger)dk_pageIndex{
-    return 0;
+    return [self privateDKPageIndex];
 }
+
+-(BOOL)dk_enableHeaderRefresh{
+    NSNumber * enable = objc_getAssociatedObject(self, kEnableHeaderRefreshKey);
+    return [enable boolValue];
+}
+
+
+-(void)setDk_enableHeaderRefresh:(BOOL)dk_enableHeaderRefresh{
+    NSNumber * enable = [NSNumber numberWithBool:dk_enableHeaderRefresh];
+    objc_setAssociatedObject(self, kEnableHeaderRefreshKey, enable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+-(BOOL)dk_enableFooterRefresh{
+    NSNumber * enable = objc_getAssociatedObject(self, kEnableFooterRefreshKey);
+    return [enable boolValue];
+}
+
+
+-(void)setDk_enableFooterRefresh:(BOOL)dk_enableFooterRefresh{
+    NSNumber * enable = [NSNumber numberWithBool:dk_enableFooterRefresh];
+    objc_setAssociatedObject(self, kEnableFooterRefreshKey, enable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+
+
 
 @end
