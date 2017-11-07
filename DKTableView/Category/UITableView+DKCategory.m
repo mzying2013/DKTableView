@@ -55,8 +55,9 @@ static const void * kPageIndexKey = &kPageIndexKey;
 }
 
 -(void)setDk_activeStatus:(DKActiveStatus)dk_activeStatus{
-    
-    
+    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_activeStatusDidUpdate:)]) {
+        [self.dk_delegate dk_activeStatusDidUpdate:self];
+    }
     
     NSNumber * status = [NSNumber numberWithInteger:dk_activeStatus];
     objc_setAssociatedObject(self, kActiveStatusKey, status, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

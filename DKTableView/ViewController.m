@@ -11,11 +11,16 @@
 #import "DKNetwork.h"
 @import Masonry;
 @import DZNEmptyDataSet;
+@import MBProgressHUD;
 
 
 static NSString * const kCellID = @"kCellID";
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+    NSArray * _status;
+    NSInteger _currentStatusIndex;
+    NSArray * _statusText;
+}
 @property (nonatomic,strong) UITableView * dkTableView;
 @property (nonatomic,strong) NSArray<NSDictionary *> * dataSouces;
 
@@ -23,29 +28,50 @@ static NSString * const kCellID = @"kCellID";
 
 @implementation ViewController
 
+
+-(instancetype)init{
+    self = [super init];
+    
+    if (self) {
+        _status = @[@(DKDefaultActiveStatus),@(DKInitLodingActiveStatus)
+                    ,@(DKEmptyActiveStatus),@(DKErrorActiveStatus)];
+        _statusText = @[@"DKDefaultActiveStatus",@"DKInitLodingActiveStatus",
+                        @"DKEmptyActiveStatus",@"DKErrorActiveStatus"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.title = @"DKTableView";
-    
     self.dkTableView = [[UITableView alloc] init];
     self.dkTableView.delegate = self;
     self.dkTableView.dataSource = self;
     self.dkTableView.dk_delegate = self;
     self.dkTableView.emptyDataSetSource = self;
     self.dkTableView.emptyDataSetDelegate = self;
+    self.dkTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.dkTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
     
     [self.view addSubview:self.dkTableView];
     
     __weak typeof(self) weakOfSelf = self;
     
+    UIBarButtonItem * rightBtnItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_switch"]
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(rightBtnItemAction)];
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
+    
     [self.dkTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakOfSelf.view);
     }];
     
-    self.dkTableView.dk_activeStatus = DKInitLodingActiveStatus;
-    [self request];
+    self.navigationItem.title = _statusText[self.dkTableView.dk_activeStatus];
+    
+    
+//    self.dkTableView.dk_activeStatus = DKInitLodingActiveStatus;
+//    [self request];
 }
 
 
@@ -68,7 +94,7 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -94,9 +120,13 @@ static NSString * const kCellID = @"kCellID";
     }
 }
 
-
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView{
-    NSString *text = self.dkTableView.dk_activeStatus == DKErrorActiveStatus ? @"点击重新加载" : @"暂无数据";
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
+    NSString *text = nil;
+    if (self.dkTableView.dk_activeStatus == DKErrorActiveStatus) {
+        text = @"点击重新加载";
+    }else{
+        text = @"暂无数据";
+    }
     UIColor *textColor = [UIColor colorWithRed:125/255.0 green:127/255.0 blue:127/255.0 alpha:1.0];
     
     NSMutableDictionary *attributes = [NSMutableDictionary new];
@@ -114,9 +144,25 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
+- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView{
+    if (self.dkTableView.dk_activeStatus == DKInitLodingActiveStatus) {
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
+        hud.label.text = @"Loading...";
+        hud.bezelView.color = [UIColor whiteColor];
+        return hud;
+    }else{
+        return nil;
+    }
+}
+
+
 #pragma mark - DZNEmptyDataSetDelegate
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
-    return YES;
+    if (self.dkTableView.dk_activeStatus == DKDefaultActiveStatus) {
+        return NO;
+    }else{
+        return YES;
+    }
 }
 
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
@@ -128,7 +174,7 @@ static NSString * const kCellID = @"kCellID";
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
-    
+    NSLog(@"did tap view..............");
 }
 
 
@@ -155,6 +201,24 @@ static NSString * const kCellID = @"kCellID";
 
 -(NSInteger)dk_pageCountValue{
     return 10;
+}
+
+
+-(void)dk_activeStatusDidUpdate:(UITableView *)tableView{
+    self.navigationItem.title = _statusText[_currentStatusIndex];
+}
+
+
+
+#pragma mark - UIControl Action
+-(void)rightBtnItemAction{
+    if(_currentStatusIndex + 1 == _status.count){
+        _currentStatusIndex = 0;
+    }else{
+        _currentStatusIndex += 1;
+    }
+    self.dkTableView.dk_activeStatus = [_status[_currentStatusIndex] integerValue];
+    [self.dkTableView reloadEmptyDataSet];
 }
 
 

@@ -35,7 +35,15 @@
  footer刷新回调方法
  */
 -(void)dk_footerRefreshAction:(UITableView *)tableView;
-    
+
+
+
+/**
+ dk_activeStatus的更新
+
+ @param tableView 当前的tableView
+ */
+-(void)dk_activeStatusDidUpdate:(UITableView *)tableView;
 
 
 /**
