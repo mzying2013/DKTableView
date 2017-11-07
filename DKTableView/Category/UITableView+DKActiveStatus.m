@@ -10,4 +10,8 @@
 
 @implementation UITableView (DKActiveStatus)
 
+-(void)activeStatus:(DKActiveStatus)status{
+    
+}
+
 @end

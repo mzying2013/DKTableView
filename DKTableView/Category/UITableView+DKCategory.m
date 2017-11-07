@@ -8,6 +8,7 @@
 
 #import "UITableView+DKCategory.h"
 #import "DKWeakObjectContainer.h"
+#import "DKTableViewDelegate.h"
 #import <objc/runtime.h>
 
 

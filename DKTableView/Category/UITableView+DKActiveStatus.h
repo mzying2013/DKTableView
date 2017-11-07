@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSInteger,DKActiveStatus){
+    DKDefaultActiveStatus = 0,
+    DKInitLodingActiveStatus,
+    DKHeaderRefreshActiveStatus,
+    DKFooterRefreshActiveStatus,
+    DKEmptyActiveStatus,
+    DKErrorActiveStatus,
+    DKLoadNoMoreActiveStatus,
+    DKLoadHaveMoreActiveStatus
+};
+
 @interface UITableView (DKActiveStatus)
+
+-(void)activeStatus:(DKActiveStatus)status;
 
 @end

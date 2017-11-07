@@ -7,19 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DKTableViewDelegate.h"
-
-typedef NS_ENUM(NSInteger,DKActiveStatus){
-    DKDefaultActiveStatus = 0,
-    DKInitLodingActiveStatus,
-    DKHeaderRefreshActiveStatus,
-    DKFooterRefreshActiveStatus,
-    DKEmptyActiveStatus,
-    DKErrorActiveStatus,
-    DKLoadNoMoreActiveStatus,
-    DKLoadHaveMoreActiveStatus
-};
-
+#import "UITableView+DKActiveStatus.h"
+@protocol DKTableViewDelegate;
 
 @interface UITableView (DKCategory)
 /**
