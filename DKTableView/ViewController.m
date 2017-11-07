@@ -151,6 +151,7 @@ static NSString * const kCellID = @"kCellID";
         hud.bezelView.color = [UIColor whiteColor];
         return hud;
     }else{
+        [MBProgressHUD hideHUDForView:scrollView animated:YES];
         return nil;
     }
 }
