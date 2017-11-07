@@ -4,11 +4,12 @@ platform :ios, '9.0'
 target 'DKTableView' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
-
+    #第三方依赖
     pod 'MJRefresh'
     pod 'DZNEmptyDataSet'
     pod 'MBProgressHUD'
     
+    #辅助测试
     pod 'Masonry'
     pod 'AFNetworking', '~> 3.0'
 

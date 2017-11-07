@@ -14,8 +14,6 @@
 static const void * kWeakObjectContainerKey = &kWeakObjectContainerKey;
 static const void * kActiveStatusKey = &kActiveStatusKey;
 static const void * kPageIndexKey = &kPageIndexKey;
-static const void * kEnableHeaderRefreshKey = &kEnableHeaderRefreshKey;
-static const void * kEnableFooterRefreshKey = &kEnableFooterRefreshKey;
 
 
 
@@ -66,28 +64,52 @@ static const void * kEnableFooterRefreshKey = &kEnableFooterRefreshKey;
 }
 
 -(BOOL)dk_enableHeaderRefresh{
-    NSNumber * enable = objc_getAssociatedObject(self, kEnableHeaderRefreshKey);
-    return [enable boolValue];
+    if (self.mj_header) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 
 -(void)setDk_enableHeaderRefresh:(BOOL)dk_enableHeaderRefresh{
-    NSNumber * enable = [NSNumber numberWithBool:dk_enableHeaderRefresh];
-    objc_setAssociatedObject(self, kEnableHeaderRefreshKey, enable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (dk_enableHeaderRefresh) {
+        if (!self.mj_header) {
+            if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_headerRefresh:)]) {
+                [self.dk_delegate dk_headerRefresh:self];
+            }
+        }
+    }else{
+        if (self.mj_header) {
+            self.mj_header = nil;
+        }
+    }
 }
 
 
 -(BOOL)dk_enableFooterRefresh{
-    NSNumber * enable = objc_getAssociatedObject(self, kEnableFooterRefreshKey);
-    return [enable boolValue];
+    if (self.mj_footer) {
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 
 -(void)setDk_enableFooterRefresh:(BOOL)dk_enableFooterRefresh{
-    NSNumber * enable = [NSNumber numberWithBool:dk_enableFooterRefresh];
-    objc_setAssociatedObject(self, kEnableFooterRefreshKey, enable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (dk_enableFooterRefresh) {
+        if (!self.mj_footer) {
+            if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_footerRefresh:)]) {
+                self.mj_footer = [self.dk_delegate dk_footerRefresh:self];
+            }
+        }
+    }else{
+        if (self.mj_footer) {
+            self.mj_footer = nil;
+        }
+    }
 }
-
+    
 
 
 

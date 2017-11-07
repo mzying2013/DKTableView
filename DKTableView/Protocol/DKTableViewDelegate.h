@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MJRefresh/MJRefresh.h>
 
 @protocol DKTableViewDelegate <NSObject>
 
@@ -34,6 +35,27 @@
  footer刷新回调方法
  */
 -(void)dk_footerRefreshAction:(UITableView *)tableView;
+    
+
+
+/**
+ header刷新组件
+
+ @param tableView 当前的tableView
+ @return header刷新组件
+ */
+-(MJRefreshHeader *)dk_headerRefresh:(UITableView *)tableView;
+    
+
+/**
+ footer刷新组件
+
+ @param tableView 当前的tableView
+ @return footer刷新组件
+ */
+-(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView;
+    
+
 
 
 @end
