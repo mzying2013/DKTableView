@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		757B3AE9977FCF4213B60B95 /* Pods_DKTableViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374D168046B9B5E26DF6FE5F /* Pods_DKTableViewTests.framework */; };
 		A90F9EFF1FB1637800C26AC0 /* DKNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = A90F9EFE1FB1637800C26AC0 /* DKNetwork.m */; };
+		A90F9F021FB198AA00C26AC0 /* UITableView+DKActiveStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A90F9F011FB198AA00C26AC0 /* UITableView+DKActiveStatus.m */; };
 		A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDC91FAFF0F200D45610 /* AppDelegate.m */; };
 		A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDCC1FAFF0F200D45610 /* ViewController.m */; };
 		A96DEDD21FAFF0F200D45610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD11FAFF0F200D45610 /* Assets.xcassets */; };
@@ -38,6 +39,8 @@
 		8DBD91384B4A7D20821C235F /* Pods-DKTableViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		A90F9EFD1FB1637800C26AC0 /* DKNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKNetwork.h; sourceTree = "<group>"; };
 		A90F9EFE1FB1637800C26AC0 /* DKNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKNetwork.m; sourceTree = "<group>"; };
+		A90F9F001FB198AA00C26AC0 /* UITableView+DKActiveStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DKActiveStatus.h"; sourceTree = "<group>"; };
+		A90F9F011FB198AA00C26AC0 /* UITableView+DKActiveStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DKActiveStatus.m"; sourceTree = "<group>"; };
 		A96DEDC51FAFF0F200D45610 /* DKTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDC81FAFF0F200D45610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A96DEDC91FAFF0F200D45610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 			children = (
 				A971F7031FB0491100A8D8A7 /* UITableView+DKCategory.h */,
 				A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */,
+				A90F9F001FB198AA00C26AC0 /* UITableView+DKActiveStatus.h */,
+				A90F9F011FB198AA00C26AC0 /* UITableView+DKActiveStatus.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -397,6 +402,7 @@
 				A96DEDD81FAFF0F200D45610 /* main.m in Sources */,
 				A971F70B1FB0587C00A8D8A7 /* DKWeakObjectContainer.m in Sources */,
 				A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */,
+				A90F9F021FB198AA00C26AC0 /* UITableView+DKActiveStatus.m in Sources */,
 				A90F9EFF1FB1637800C26AC0 /* DKNetwork.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
