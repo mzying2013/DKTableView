@@ -23,19 +23,6 @@ static const void * kTotalCountKey = &kTotalCountKey;
 @implementation UITableView (DKCategory)
 
 #pragma mark - Private Property Method
--(NSInteger)private_dk_pageIndex{
-    NSNumber * index = objc_getAssociatedObject(self, kPageIndexKey);
-    return [index integerValue];
-}
-
-
--(void)setPrivate_dk_pageIndex:(NSInteger)private_dk_pageIndex{
-    NSNumber * index = [NSNumber numberWithInteger:private_dk_pageIndex];
-    objc_setAssociatedObject(self, kPageIndexKey, index, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-
 /**
  私有方法，返回存储的cell数量
 
@@ -80,17 +67,26 @@ static const void * kTotalCountKey = &kTotalCountKey;
 }
 
 -(void)setDk_activeStatus:(DKActiveStatus)dk_activeStatus{
-    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_activeStatusDidUpdate:)]) {
-        [self.dk_delegate dk_activeStatusDidUpdate:self];
-    }
+    [self private_dk_activeStatusHandler:dk_activeStatus];
     
     NSNumber * status = [NSNumber numberWithInteger:dk_activeStatus];
     objc_setAssociatedObject(self, kActiveStatusKey, status, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_activeStatusDidUpdate:)]) {
+        [self.dk_delegate dk_activeStatusDidUpdate:self];
+    }
 }
 
 
 -(NSInteger)dk_pageIndex{
-    return [self private_dk_pageIndex];
+    if (self.dk_activeStatus == DKLoadingStatus) {
+        if (![self footerIsRefreshing]) {
+            return [self private_dk_pageIndexInitialValue];
+        }
+    }
+    
+    NSInteger index = [self private_dk_currentTotalCount] / [self private_dk_pageCountValue];
+    return index + [self private_dk_pageIndexInitialValue];
 }
 
 -(BOOL)dk_enableHeaderRefresh{
@@ -144,43 +140,67 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 #pragma mark - Private Method
 -(void)private_dk_activeStatusHandler:(DKActiveStatus)status{
-    if (status == DKInitLodingActiveStatus) {
-        [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
-        
-    }else if(status == DKHeaderRefreshActiveStatus){
-        //重置分页索引
-        [self setPrivate_dk_pageIndex:[self private_dk_pageIndexInitialValue]];
-        [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
-        
-    }else if(status == DKFooterRefreshActiveStatus){
-        
-        
-    }else if(status == DKEmptyActiveStatus){
-        if ([self headerIsRefreshing]) {
+    if ([self headerIsRefreshing]) {
+        //Header
+        if (status == DKLoadingStatus) {
+            [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
+            
+        }else if(status == DKSuccessActiveStatus){
             [self.mj_header endRefreshing];
+            
+            BOOL isEmpty = [self private_dk_currentTotalCount] == 0;
+            if (isEmpty) {
+                self.mj_header.hidden = YES;
+                self.mj_footer.hidden = YES;
+            }else{
+                self.mj_header.hidden = NO;
+            }
+            
+        }else if(status == DKErrorActiveStatus){
             self.mj_header.hidden = YES;
             self.mj_footer.hidden = YES;
-            
-        }else if([self footerIsRefreshing]){
-            [self.mj_footer endRefreshingWithNoMoreData];
         }
         
-    }else if(status == DKErrorActiveStatus){
-        if (self.mj_header && [self.mj_header isRefreshing]) {
-            [self.mj_header endRefreshing];
+        
+    }else if([self footerIsRefreshing]){
+        //Footer
+        if (status == DKLoadingStatus) {
+            [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
+            
+        }else if(status == DKSuccessActiveStatus){
+            [self.mj_footer endRefreshing];
+            
+            BOOL isEmpty = ([self private_dk_currentTotalCount] - [self private_dk_totalCount]) <= 0;
+            
+            if (isEmpty) {
+                [self.mj_footer endRefreshingWithNoMoreData];
+            }else{
+                [self.mj_footer endRefreshing];
+            }
+            
+        }else if(status == DKErrorActiveStatus){
+            [self.mj_footer endRefreshing];
+        }
+        
+    }else{
+        //Init
+        if (status == DKLoadingStatus) {
             self.mj_header.hidden = YES;
             self.mj_footer.hidden = YES;
+            [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
             
-        }else if(self.mj_footer && [self.mj_footer isRefreshing]){
-            [self.mj_footer endRefreshingWithNoMoreData];
-        }
-        
-    }else if(status == DKSuccessActiveStatus){
-        if ([self private_dk_currentTotalCount] < [self private_dk_pageCountValue]) {
-            //No More
-            [self.mj_footer endRefreshingWithNoMoreData];
-        }else{
-            //Have More
+        }else if(status == DKSuccessActiveStatus){
+            BOOL isEmpty = [self private_dk_currentTotalCount] == 0;
+            
+            if (isEmpty) {
+                //空数据
+                
+            }else{
+                self.mj_header.hidden = NO;
+                self.mj_footer.hidden = NO;
+            }
+            
+        }else if(status == DKErrorActiveStatus){
             [self.mj_footer endRefreshing];
         }
     }
@@ -216,8 +236,9 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 -(NSInteger)private_dk_pageCountValue{
     if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_pageCountValue)]) {
-        [self.dk_delegate dk_pageCountValue];
+        return [self.dk_delegate dk_pageCountValue];
     }
+    return 10;
 }
 
 

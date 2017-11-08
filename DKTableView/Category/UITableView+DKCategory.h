@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UITableView+DKActiveStatus.h"
 @protocol DKTableViewDelegate;
 
 
-typedef NS_ENUM(NSInteger, DKStatus){
-    DKDefaultStatus = 0,
-    DKLoadingStatus,
-    DKCompleted
+typedef NS_ENUM(NSInteger,DKActiveStatus){
+    DKDefaultActiveStatus = 0,
+    DKLodingActiveStatus,
+    DKErrorActiveStatus,
+    DKSuccessActiveStatus
 };
-
 
 
 @interface UITableView (DKCategory)
@@ -24,12 +23,6 @@ typedef NS_ENUM(NSInteger, DKStatus){
  活跃状态，默认为DKDefaultActiveStatus
  */
 @property (nonatomic,assign) DKActiveStatus dk_activeStatus;
-
-
-/**
- 状态
- */
-//@property (nonatomic,assign) DKStatus dk_status;
 
 /**
  当前页码
