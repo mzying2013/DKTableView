@@ -33,10 +33,10 @@ static NSString * const kCellID = @"kCellID";
     self = [super init];
     
     if (self) {
-        _status = @[@(DKDefaultActiveStatus),@(DKInitLodingActiveStatus)
-                    ,@(DKEmptyActiveStatus),@(DKErrorActiveStatus)];
-        _statusText = @[@"DKDefaultActiveStatus",@"DKInitLodingActiveStatus",
-                        @"DKEmptyActiveStatus",@"DKErrorActiveStatus"];
+        _status = @[@(DKDefaultActiveStatus),@(DKLoadingActiveStatus)
+                    ,@(DKSuccessActiveStatus),@(DKErrorActiveStatus)];
+        _statusText = @[@"DKDefaultActiveStatus",@"DKLoadingActiveStatus",
+                        @"DKSuccessActiveStatus",@"DKErrorActiveStatus"];
     }
     return self;
 }
@@ -70,7 +70,7 @@ static NSString * const kCellID = @"kCellID";
     self.navigationItem.title = _statusText[self.dkTableView.dk_activeStatus];
     
     
-    self.dkTableView.dk_activeStatus = DKInitLodingActiveStatus;
+    self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
     [self request];
 }
 

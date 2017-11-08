@@ -12,7 +12,7 @@
 
 typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKDefaultActiveStatus = 0,
-    DKLodingActiveStatus,
+    DKLoadingActiveStatus,
     DKErrorActiveStatus,
     DKSuccessActiveStatus
 };
@@ -46,6 +46,12 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
  是否启用上拉刷新，默认值NO
  */
 @property (nonatomic,assign) BOOL dk_enableFooterRefresh;
+
+
+/**
+ 是否是初始化加载
+ */
+@property (nonatomic,assign,readonly) BOOL dk_isInitLoading;
 
 
 

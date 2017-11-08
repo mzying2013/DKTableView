@@ -79,7 +79,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 
 -(NSInteger)dk_pageIndex{
-    if (self.dk_activeStatus == DKLoadingStatus) {
+    if (self.dk_activeStatus == DKLoadingActiveStatus) {
         if (![self footerIsRefreshing]) {
             return [self private_dk_pageIndexInitialValue];
         }
@@ -138,11 +138,22 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 
 
+-(BOOL)dk_isInitLoading{
+    if(self.dk_activeStatus == DKLoadingActiveStatus){
+        if (![self headerIsRefreshing] && ![self footerIsRefreshing]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+
+
 #pragma mark - Private Method
 -(void)private_dk_activeStatusHandler:(DKActiveStatus)status{
     if ([self headerIsRefreshing]) {
         //Header
-        if (status == DKLoadingStatus) {
+        if (status == DKLoadingActiveStatus) {
             [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
             
         }else if(status == DKSuccessActiveStatus){
@@ -164,7 +175,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
         
     }else if([self footerIsRefreshing]){
         //Footer
-        if (status == DKLoadingStatus) {
+        if (status == DKLoadingActiveStatus) {
             [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
             
         }else if(status == DKSuccessActiveStatus){
@@ -184,7 +195,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
         
     }else{
         //Init
-        if (status == DKLoadingStatus) {
+        if (status == DKLoadingActiveStatus) {
             self.mj_header.hidden = YES;
             self.mj_footer.hidden = YES;
             [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
