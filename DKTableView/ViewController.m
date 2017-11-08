@@ -70,8 +70,8 @@ static NSString * const kCellID = @"kCellID";
     self.navigationItem.title = _statusText[self.dkTableView.dk_activeStatus];
     
     
-//    self.dkTableView.dk_activeStatus = DKInitLodingActiveStatus;
-//    [self request];
+    self.dkTableView.dk_activeStatus = DKInitLodingActiveStatus;
+    [self request];
 }
 
 
@@ -157,6 +157,7 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
+
 #pragma mark - DZNEmptyDataSetDelegate
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
     if (self.dkTableView.dk_activeStatus == DKDefaultActiveStatus) {
@@ -235,8 +236,25 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - Request Method
 -(void)request{
+    __weak typeof(self) weakOfSelf = self;
+    
     [[DKNetwork share] top250:self.dkTableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
-        
+        if (weakOfSelf.dataSouces.count > 0) {
+            if (!subjects) {
+                
+            }else{
+                if (subjects.count > 0) {
+                    NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dataSouces];
+                    [_tempMArray addObjectsFromArray:subjects];
+                    weakOfSelf.dataSouces = [_tempMArray copy];
+                }
+            }
+        }else{
+            if (subjects.count > 0) {
+                weakOfSelf.dataSouces = subjects;
+                [weakOfSelf.dkTableView reloadData];
+            }
+        }
     }];
 }
 

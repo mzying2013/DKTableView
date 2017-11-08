@@ -16,12 +16,11 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKFooterRefreshActiveStatus,
     DKEmptyActiveStatus,
     DKErrorActiveStatus,
-    DKLoadNoMoreActiveStatus,
-    DKLoadHaveMoreActiveStatus
+    DKSuccessActiveStatus
 };
 
 @interface UITableView (DKActiveStatus)
 
--(void)activeStatus:(DKActiveStatus)status;
+-(void)dk_activeStatusHandler:(DKActiveStatus)status;
 
 @end
