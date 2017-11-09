@@ -50,14 +50,26 @@
                       parameters:parameters
                         progress:nil
                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                             if (completed) {
-                                 completed(responseObject[@"subjects"]);
-                             }
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 if (completed) {
+                                     completed(responseObject[@"subjects"]);
+                                 }
+                             });
+                             
                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                              NSLog(@"top 250 network get error:%@",error);
-                             if (completed) {
-                                 completed(nil);
-                             }
+                             
+                             dispatch_async(dispatch_get_main_queue(), ^{
+                                 if (completed) {
+                                     
+                                     NSMutableArray * _tempMArray = [NSMutableArray array];
+                                     for (NSInteger index = 0; index < count; index++) {
+                                         NSString * name = [NSString stringWithFormat:@"%ld 电影",(long)index + 1];
+                                         [_tempMArray addObject:@{@"title":name}];
+                                     }
+                                     completed([_tempMArray copy]);
+                                 }
+                             });                             
                          }];
 }
 
