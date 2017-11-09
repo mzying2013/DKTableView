@@ -14,8 +14,8 @@
 typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKDefaultActiveStatus = 0,
     DKLoadingActiveStatus,
-    DKErrorActiveStatus,
-    DKSuccessActiveStatus
+    DKSuccessActiveStatus,
+    DKErrorActiveStatus    
 };
 
 
