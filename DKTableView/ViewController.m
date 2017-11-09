@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "UITableView+DKPage.h"
 #import "DKNetwork.h"
+#import "DKEmptyDataSetImplement.h"
 
 
 @import Masonry;
@@ -18,13 +19,14 @@
 
 static NSString * const kCellID = @"kCellID";
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DKEmptyDataSetDelegate>{
     NSInteger _currentStatusIndex;
     NSArray * _statusText;
 }
 @property (nonatomic,strong) UITableView * dkTableView;
 @property (nonatomic,strong) NSArray<NSDictionary *> * dkDataSouces;
 @property (nonatomic,weak) MBProgressHUD * base_loadingHUD;
+@property (nonatomic,strong)DKEmptyDataSetImplement * base_emptyDataSetImp;
 
 @end
 
@@ -52,8 +54,8 @@ static NSString * const kCellID = @"kCellID";
     self.dkTableView.dk_enableHeaderRefresh = YES;
     self.dkTableView.dk_enableFooterRefresh = YES;
     
-    self.dkTableView.emptyDataSetSource = self;
-    self.dkTableView.emptyDataSetDelegate = self;
+    self.dkTableView.emptyDataSetSource = self.base_emptyDataSetImp;
+    self.dkTableView.emptyDataSetDelegate = self.base_emptyDataSetImp;
     
     self.dkTableView.estimatedRowHeight = 0;
     self.dkTableView.estimatedSectionHeaderHeight = 0;
@@ -99,6 +101,16 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
+
+-(DKEmptyDataSetImplement *)base_emptyDataSetImp{
+    if (!_base_emptyDataSetImp) {
+        _base_emptyDataSetImp = [DKEmptyDataSetImplement new];
+        _base_emptyDataSetImp.delegate = self;
+    }
+    return _base_emptyDataSetImp;
+}
+
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.dkDataSouces.count;
@@ -119,75 +131,7 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
-#pragma mark - DZNEmptyDataSetSource
--(UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
-    if (self.dkTableView.dk_activeStatus == DKErrorActiveStatus) {
-        return [UIImage imageNamed:@"common_404"];
-    }else{
-        return [UIImage imageNamed:@"no_data"];
-    }
-}
-
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView{
-    NSString *text = nil;
-    if (self.dkTableView.dk_activeStatus == DKErrorActiveStatus) {
-        text = @"点击重新加载";
-    }else{
-        text = @"暂无数据";
-    }
-    UIColor *textColor = [UIColor colorWithRed:125/255.0 green:127/255.0 blue:127/255.0 alpha:1.0];
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    paragraph.lineSpacing = 2.0;
-    
-    [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    [attributes setObject:paragraph forKey:NSParagraphStyleAttributeName];
-    [attributes setObject:[UIFont systemFontOfSize:14] forKey:NSFontAttributeName];
-    
-    return [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
-}
-
-
-- (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView{
-    NSLog(@"dk active status: %ld",self.dkTableView.dk_activeStatus);
-    
-    if (self.dkTableView.dk_isInitLoading) {
-        self.base_loadingHUD = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
-        self.base_loadingHUD.label.text = @"Loading...";
-        self.base_loadingHUD.bezelView.color = scrollView.backgroundColor;
-        return self.base_loadingHUD;
-    }else{
-        if (self.base_loadingHUD) {
-            [self.base_loadingHUD hideAnimated:YES];
-        }
-        return nil;
-    }
-}
-
-
-
-#pragma mark - DZNEmptyDataSetDelegate
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
-    if ([scrollView isKindOfClass:[UITableView class]]) {
-        if(((UITableView *)scrollView).dk_activeStatus == DKLoadingActiveStatus){
-            return NO;
-        }
-    }
-    return YES;
-}
-
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return NO;
-}
-
+#pragma mark - DKEmptyDataSetDelegate
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
     if ([scrollView isKindOfClass:[UITableView class]]) {
         UITableView * tableView = (UITableView *)scrollView;

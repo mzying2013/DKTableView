@@ -10,7 +10,14 @@
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 
+@protocol DKEmptyDataSetDelegate<NSObject>
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view;
+
+@end
+
+
 
 @interface DKEmptyDataSetImplement : NSObject<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@property (nonatomic,weak) id<DKEmptyDataSetDelegate> delegate;
 
 @end
