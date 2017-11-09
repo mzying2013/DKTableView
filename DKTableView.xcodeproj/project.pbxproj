@@ -52,7 +52,6 @@
 		A96DEDE31FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A971F7031FB0491100A8D8A7 /* UITableView+DKCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DKCategory.h"; sourceTree = "<group>"; };
 		A971F7041FB0491100A8D8A7 /* UITableView+DKCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DKCategory.m"; sourceTree = "<group>"; };
-		A971F7071FB0493F00A8D8A7 /* DKTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewDelegate.h; sourceTree = "<group>"; };
 		A971F7081FB0503700A8D8A7 /* DKTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewHeader.h; sourceTree = "<group>"; };
 		A971F7091FB0587C00A8D8A7 /* DKWeakObjectContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKWeakObjectContainer.h; sourceTree = "<group>"; };
 		A971F70A1FB0587C00A8D8A7 /* DKWeakObjectContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKWeakObjectContainer.m; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				A90F9EFC1FB1636300C26AC0 /* Network */,
-				A971F7061FB0492300A8D8A7 /* Protocol */,
 				A9F04B141FAFF65F00181E94 /* Category */,
 				A971F7081FB0503700A8D8A7 /* DKTableViewHeader.h */,
 				A971F7091FB0587C00A8D8A7 /* DKWeakObjectContainer.h */,
@@ -156,14 +154,6 @@
 				A96DEDE31FAFF0F200D45610 /* Info.plist */,
 			);
 			path = DKTableViewTests;
-			sourceTree = "<group>";
-		};
-		A971F7061FB0492300A8D8A7 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				A971F7071FB0493F00A8D8A7 /* DKTableViewDelegate.h */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A9F04B141FAFF65F00181E94 /* Category */ = {

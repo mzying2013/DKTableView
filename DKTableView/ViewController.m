@@ -71,7 +71,7 @@ static NSString * const kCellID = @"kCellID";
     
     
     self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self request];
+    [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
 }
 
 
@@ -94,13 +94,14 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return self.dataSouces.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    NSString * text = [NSString stringWithFormat:@"%ld",(long)indexPath.row + 1];
+    NSString * name = self.dataSouces[indexPath.row][@"title"];
+    NSString * text = [NSString stringWithFormat:@"%ld.%@",(long)indexPath.row + 1,name];
     cell.textLabel.text = text;
     return cell;
 }
@@ -145,7 +146,7 @@ static NSString * const kCellID = @"kCellID";
 
 
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView{
-    if (self.dkTableView.dk_activeStatus == DKInitLodingActiveStatus) {
+    if (self.dkTableView.dk_isInitLoading) {
         MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
         hud.label.text = @"Loading...";
         hud.bezelView.color = [UIColor whiteColor];
@@ -160,10 +161,11 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - DZNEmptyDataSetDelegate
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView{
-    if (self.dkTableView.dk_activeStatus == DKDefaultActiveStatus) {
-        return NO;
-    }else{
+    if (self.dkTableView.dk_isInitLoading ||
+        self.dkTableView.dk_activeStatus == DKErrorActiveStatus) {
         return YES;
+    }else{
+        return NO;
     }
 }
 
@@ -210,6 +212,10 @@ static NSString * const kCellID = @"kCellID";
     self.navigationItem.title = _statusText[_currentStatusIndex];
 }
 
+-(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status{
+    self.navigationItem.title = _statusText[status];
+}
+
 
 
 #pragma mark - UIControl Action
@@ -235,26 +241,27 @@ static NSString * const kCellID = @"kCellID";
 
 
 #pragma mark - Request Method
--(void)request{
+-(void)dkRequest{
     __weak typeof(self) weakOfSelf = self;
     
     [[DKNetwork share] top250:self.dkTableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
-        if (weakOfSelf.dataSouces.count > 0) {
-            if (!subjects) {
-                
-            }else{
-                if (subjects.count > 0) {
-                    NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dataSouces];
-                    [_tempMArray addObjectsFromArray:subjects];
-                    weakOfSelf.dataSouces = [_tempMArray copy];
-                }
-            }
-        }else{
-            if (subjects.count > 0) {
-                weakOfSelf.dataSouces = subjects;
-                [weakOfSelf.dkTableView reloadData];
-            }
+        if (!subjects) {
+            weakOfSelf.dkTableView.dk_activeStatus = DKErrorActiveStatus;
+            return;
         }
+        
+        if (YES || subjects.count == 0) {
+            [weakOfSelf.dkTableView reloadData];
+            weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
+            return;
+        }
+        
+        NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dataSouces];
+        [_tempMArray addObjectsFromArray:subjects];
+        weakOfSelf.dataSouces = [_tempMArray copy];
+        [weakOfSelf.dkTableView reloadData];
+        
+        weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
     }];
 }
 

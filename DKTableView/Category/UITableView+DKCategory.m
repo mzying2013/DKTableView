@@ -8,7 +8,6 @@
 
 #import "UITableView+DKCategory.h"
 #import "DKWeakObjectContainer.h"
-#import "DKTableViewDelegate.h"
 #import <objc/runtime.h>
 
 
@@ -67,13 +66,13 @@ static const void * kTotalCountKey = &kTotalCountKey;
 }
 
 -(void)setDk_activeStatus:(DKActiveStatus)dk_activeStatus{
-    [self private_dk_activeStatusHandler:dk_activeStatus];
-    
     NSNumber * status = [NSNumber numberWithInteger:dk_activeStatus];
     objc_setAssociatedObject(self, kActiveStatusKey, status, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
-    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_activeStatusDidUpdate:)]) {
-        [self.dk_delegate dk_activeStatusDidUpdate:self];
+    [self private_dk_activeStatusHandler:dk_activeStatus];
+    
+    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_tableView:activeStatusDidUpdate:)]) {
+        [self.dk_delegate dk_tableView:self activeStatusDidUpdate:self.dk_activeStatus];
     }
 }
 
@@ -102,7 +101,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
     if (dk_enableHeaderRefresh) {
         if (!self.mj_header) {
             if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_headerRefresh:)]) {
-                [self.dk_delegate dk_headerRefresh:self];
+                self.mj_header = [self.dk_delegate dk_headerRefresh:self];
+                self.mj_header.hidden = YES;
             }
         }
     }else{
@@ -127,6 +127,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
         if (!self.mj_footer) {
             if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_footerRefresh:)]) {
                 self.mj_footer = [self.dk_delegate dk_footerRefresh:self];
+                self.mj_footer.hidden = YES;
             }
         }
     }else{
@@ -205,6 +206,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
             
             if (isEmpty) {
                 //空数据
+                self.mj_header.hidden = YES;
+                self.mj_footer.hidden = YES;
                 
             }else{
                 self.mj_header.hidden = NO;

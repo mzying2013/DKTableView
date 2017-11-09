@@ -12,6 +12,4 @@
 
 #endif /* DKTableViewHeader_h */
 
-
-#import "DKTableViewDelegate.h"
 #import "UITableView+DKCategory.h"
