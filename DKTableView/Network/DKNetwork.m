@@ -32,11 +32,13 @@
 #pragma mark - Property Method
 -(AFHTTPSessionManager *)httpSession{
     if (!_httpSession) {
-        NSURL * url = [NSURL URLWithString:@"https://api.douban.com"];
+        NSURL * url = [NSURL URLWithString:@"http://api.douban.com"];
         _httpSession = [[AFHTTPSessionManager alloc] initWithBaseURL:url];
         _httpSession.requestSerializer.timeoutInterval = 15;
         _httpSession.responseSerializer = [AFJSONResponseSerializer serializer];
         ((AFJSONResponseSerializer *)_httpSession.responseSerializer).removesKeysWithNullValues = YES;
+        _httpSession.securityPolicy = [AFSecurityPolicy defaultPolicy];
+        _httpSession.securityPolicy.allowInvalidCertificates = YES;
     }
     return _httpSession;
 }
@@ -52,7 +54,11 @@
                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                              dispatch_async(dispatch_get_main_queue(), ^{
                                  if (completed) {
-                                     completed(responseObject[@"subjects"]);
+                                     if (start > 2) {
+                                         completed(@[]);
+                                     }else{
+                                         completed(responseObject[@"subjects"]);
+                                     }
                                  }
                              });
                              
@@ -61,15 +67,9 @@
                              
                              dispatch_async(dispatch_get_main_queue(), ^{
                                  if (completed) {
-                                     
-                                     NSMutableArray * _tempMArray = [NSMutableArray array];
-                                     for (NSInteger index = 0; index < count; index++) {
-                                         NSString * name = [NSString stringWithFormat:@"%ld 电影",(long)index + 1];
-                                         [_tempMArray addObject:@{@"title":name}];
-                                     }
-                                     completed([_tempMArray copy]);
+                                     completed(nil);
                                  }
-                             });                             
+                             });
                          }];
 }
 

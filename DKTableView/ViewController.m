@@ -267,14 +267,13 @@ static NSString * const kCellID = @"kCellID";
     __weak typeof(self) weakOfSelf = self;
     
     [[DKNetwork share] top250:self.dkTableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
-        if (!subjects) {
+        if ([weakOfSelf.dkTableView.mj_footer isRefreshing] || !subjects) {
             weakOfSelf.dkTableView.dk_activeStatus = DKErrorActiveStatus;
             [weakOfSelf.dkTableView reloadData];
             return;
         }
         
-        if ([weakOfSelf.dkTableView.mj_header isRefreshing] || subjects.count == 0) {
-            weakOfSelf.dkDataSouces = @[];
+        if (subjects.count == 0) {
             weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
             [weakOfSelf.dkTableView reloadData];
             return;

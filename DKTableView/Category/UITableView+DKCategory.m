@@ -158,6 +158,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
             [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
             
         }else if(status == DKSuccessActiveStatus){
+            [self.mj_header endRefreshing];
+            
             BOOL isEmpty = [self private_dk_currentTotalCount] == 0;
             if (isEmpty) {
                 self.mj_header.hidden = YES;
@@ -167,10 +169,10 @@ static const void * kTotalCountKey = &kTotalCountKey;
                 BOOL noMore = [self private_dk_currentTotalCount] < [self private_dk_pageCountValue];
                 if (noMore) {
                     [self.mj_footer endRefreshingWithNoMoreData];
-                    return;
+                }else{
+                    [self.mj_footer resetNoMoreData];
                 }
             }
-            [self.mj_header endRefreshing];
             
         }else if(status == DKErrorActiveStatus){
             [self.mj_header endRefreshing];
@@ -187,7 +189,10 @@ static const void * kTotalCountKey = &kTotalCountKey;
         }else if(status == DKSuccessActiveStatus){
             [self.mj_footer endRefreshing];
             
-            BOOL isEmpty = ([self private_dk_currentTotalCount] - [self private_dk_totalCount]) <= 0;
+            NSInteger currentTotalCount = [self private_dk_currentTotalCount];
+            NSInteger beforeRefreshTotalCount = [self private_dk_totalCount];
+            NSInteger pageCount = [self private_dk_pageCountValue];
+            BOOL isEmpty = (currentTotalCount - beforeRefreshTotalCount) < pageCount;
             
             if (isEmpty) {
                 [self.mj_footer endRefreshingWithNoMoreData];
