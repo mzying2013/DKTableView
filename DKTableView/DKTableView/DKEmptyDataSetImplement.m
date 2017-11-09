@@ -77,6 +77,9 @@ static NSString * const kDKLoadingText = @"正在加载";
         if (tableView.dk_isInitLoading) {
             dk_loadingHUD = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
             dk_loadingHUD.label.text = kDKLoadingText;
+            dk_loadingHUD.label.font = [UIFont systemFontOfSize:14];
+            UIColor *textColor = [UIColor colorWithRed:125/255.0 green:127/255.0 blue:127/255.0 alpha:1.0];
+            dk_loadingHUD.label.textColor = textColor;
             dk_loadingHUD.bezelView.color = scrollView.backgroundColor;
             return dk_loadingHUD;
         }else{
