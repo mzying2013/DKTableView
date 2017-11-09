@@ -227,11 +227,21 @@ static const void * kTotalCountKey = &kTotalCountKey;
  @return cell的数量
  */
 -(NSInteger)private_dk_currentTotalCount{
-    NSInteger totalCount = 0;
-    for (NSInteger section = 0; section<self.numberOfSections; section++) {
-        totalCount += [self numberOfRowsInSection:section];
+    id<UITableViewDataSource> dataSource = self.dataSource;
+    
+    NSInteger sections = 1;
+    if (dataSource && [dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
+        sections = [dataSource numberOfSectionsInTableView:self];
     }
-    return totalCount;
+    
+    NSInteger items = 0;
+    if (dataSource && [dataSource respondsToSelector:@selector(tableView:numberOfRowsInSection:)]) {
+        for (NSInteger section = 0; section < sections; section++) {
+            items += [dataSource tableView:self numberOfRowsInSection:section];
+        }
+    }
+    
+    return items;
 }
 
 
