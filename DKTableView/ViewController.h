@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DKBaseTableViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : DKBaseTableViewController
 
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DKEmptyDataSetImplement;
+#import "DKTableViewHeader.h"
 
 @interface DKBaseTableViewController : UIViewController
 @property (nonatomic,strong,readonly) DKEmptyDataSetImplement * emptyDataSetImp;

@@ -7,10 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "UITableView+DKPage.h"
 #import "DKNetwork.h"
-#import "DKEmptyDataSetImplement.h"
-
 
 @import Masonry;
 @import DZNEmptyDataSet;
@@ -19,14 +16,11 @@
 
 static NSString * const kCellID = @"kCellID";
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DKEmptyDataSetDelegate>{
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKEmptyDataSetDelegate>{
     NSInteger _currentStatusIndex;
     NSArray * _statusText;
 }
-@property (nonatomic,strong) UITableView * dkTableView;
 @property (nonatomic,strong) NSArray<NSDictionary *> * dkDataSouces;
-@property (nonatomic,weak) MBProgressHUD * base_loadingHUD;
-@property (nonatomic,strong)DKEmptyDataSetImplement * base_emptyDataSetImp;
 
 @end
 
@@ -46,41 +40,22 @@ static NSString * const kCellID = @"kCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.dkTableView = [[UITableView alloc] init];
-    self.dkTableView.delegate = self;
-    self.dkTableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.dk_enableHeaderRefresh = YES;
+    self.tableView.dk_enableFooterRefresh = YES;
+    self.emptyDataSetImp.delegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
     
-    self.dkTableView.dk_delegate = self;
-    self.dkTableView.dk_enableHeaderRefresh = YES;
-    self.dkTableView.dk_enableFooterRefresh = YES;
-    
-    self.dkTableView.emptyDataSetSource = self.base_emptyDataSetImp;
-    self.dkTableView.emptyDataSetDelegate = self.base_emptyDataSetImp;
-    
-    self.dkTableView.estimatedRowHeight = 0;
-    self.dkTableView.estimatedSectionHeaderHeight = 0;
-    self.dkTableView.estimatedSectionFooterHeight = 0;
-    
-    self.dkTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.dkTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
-    
-    [self.view addSubview:self.dkTableView];
-    
+    [self.view addSubview:self.tableView];
     __weak typeof(self) weakOfSelf = self;
-    
-    UIBarButtonItem * rightBtnItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_switch"]
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(rightBtnItemAction)];
-    self.navigationItem.rightBarButtonItem = rightBtnItem;
-    
-    [self.dkTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakOfSelf.view);
     }];
     
-    self.navigationItem.title = _statusText[self.dkTableView.dk_activeStatus];
+    self.navigationItem.title = _statusText[self.tableView.dk_activeStatus];
     
-    self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
+    self.tableView.dk_activeStatus = DKLoadingActiveStatus;
     [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
 }
 
@@ -98,16 +73,6 @@ static NSString * const kCellID = @"kCellID";
         _dkDataSouces = [NSArray array];
     }
     return _dkDataSouces;
-}
-
-
-
--(DKEmptyDataSetImplement *)base_emptyDataSetImp{
-    if (!_base_emptyDataSetImp) {
-        _base_emptyDataSetImp = [DKEmptyDataSetImplement new];
-        _base_emptyDataSetImp.delegate = self;
-    }
-    return _base_emptyDataSetImp;
 }
 
 
@@ -142,65 +107,25 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
-
 #pragma mark - DKTableViewDelegate
--(MJRefreshHeader *)dk_headerRefresh:(UITableView *)tableView{
-    MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self
-                                                                      refreshingAction:@selector(headerRefreshAction)];
-    header.automaticallyChangeAlpha = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    header.stateLabel.hidden = YES;
-    return header;
-}
+//-(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status{
+//    self.navigationItem.title = _statusText[status];
+//}
 
-
--(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView{
-    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
-                                                                        refreshingAction:@selector(footerRefreshAction)];
-    [footer setTitle:@"正在加载更多" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
-    return footer;
-}
-
-
--(NSInteger)dk_pageIndexInitialValue{
-    return 0;
-}
-
-
--(NSInteger)dk_pageCountValue{
-    return 10;
-}
-
--(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status{
-    self.navigationItem.title = _statusText[status];
-}
-
-
-
-#pragma mark - UIControl Action
--(void)rightBtnItemAction{
-//    if(_currentStatusIndex + 1 == _status.count){
-//        _currentStatusIndex = 0;
-//    }else{
-//        _currentStatusIndex += 1;
-//    }
-//    self.dkTableView.dk_activeStatus = [_status[_currentStatusIndex] integerValue];
-//    [self.dkTableView reloadEmptyDataSet];
-    
-}
 
 
 #pragma mark - Refresh Action
 -(void)headerRefreshAction{
-    self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self.dkTableView reloadEmptyDataSet];
+    [super headerRefreshAction];
+    self.tableView.dk_activeStatus = DKLoadingActiveStatus;
+    [self.tableView reloadEmptyDataSet];
     [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
 }
 
 -(void)footerRefreshAction{
-    self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self.dkTableView reloadEmptyDataSet];
+    [super footerRefreshAction];
+    self.tableView.dk_activeStatus = DKLoadingActiveStatus;
+    [self.tableView reloadEmptyDataSet];
     [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
 }
 
@@ -209,20 +134,20 @@ static NSString * const kCellID = @"kCellID";
 -(void)dkRequest{
     __weak typeof(self) weakOfSelf = self;
     
-    [[DKNetwork share] top250:self.dkTableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
-        if ([weakOfSelf.dkTableView.mj_footer isRefreshing] || !subjects) {
-            weakOfSelf.dkTableView.dk_activeStatus = DKErrorActiveStatus;
-            [weakOfSelf.dkTableView reloadData];
+    [[DKNetwork share] top250:self.tableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
+        if ([weakOfSelf.tableView.mj_footer isRefreshing] || !subjects) {
+            weakOfSelf.tableView.dk_activeStatus = DKErrorActiveStatus;
+            [weakOfSelf.tableView reloadData];
             return;
         }
         
         if (subjects.count == 0) {
-            weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
-            [weakOfSelf.dkTableView reloadData];
+            weakOfSelf.tableView.dk_activeStatus = DKSuccessActiveStatus;
+            [weakOfSelf.tableView reloadData];
             return;
         }
         
-        if ([weakOfSelf.dkTableView.mj_header isRefreshing]) {
+        if ([weakOfSelf.tableView.mj_header isRefreshing]) {
             weakOfSelf.dkDataSouces = subjects;
         }else{
             NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dkDataSouces];
@@ -230,8 +155,8 @@ static NSString * const kCellID = @"kCellID";
             weakOfSelf.dkDataSouces = [_tempMArray copy];
         }
         
-        weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
-        [weakOfSelf.dkTableView reloadData];
+        weakOfSelf.tableView.dk_activeStatus = DKSuccessActiveStatus;
+        [weakOfSelf.tableView reloadData];
     }];
 }
 

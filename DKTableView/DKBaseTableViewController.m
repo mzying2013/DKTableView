@@ -7,9 +7,6 @@
 //
 
 #import "DKBaseTableViewController.h"
-#import "DKTableViewHeader.h"
-
-#import <Masonry/Masonry.h>
 
 @interface DKBaseTableViewController ()<DKTableViewDelegate>
 @property (nonatomic,strong) UITableView * base_tableView;
@@ -22,12 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.base_tableView];
-    
-    __weak typeof(self) weakOfSelf = self;
-    [self.base_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakOfSelf.view);
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
