@@ -158,17 +158,22 @@ static const void * kTotalCountKey = &kTotalCountKey;
             [self setPrivate_dk_totalCount:[self private_dk_currentTotalCount]];
             
         }else if(status == DKSuccessActiveStatus){
-            [self.mj_header endRefreshing];
-            
             BOOL isEmpty = [self private_dk_currentTotalCount] == 0;
             if (isEmpty) {
                 self.mj_header.hidden = YES;
                 self.mj_footer.hidden = YES;
             }else{
                 self.mj_header.hidden = NO;
+                BOOL noMore = [self private_dk_currentTotalCount] < [self private_dk_pageCountValue];
+                if (noMore) {
+                    [self.mj_footer endRefreshingWithNoMoreData];
+                    return;
+                }
             }
+            [self.mj_header endRefreshing];
             
         }else if(status == DKErrorActiveStatus){
+            [self.mj_header endRefreshing];
             self.mj_header.hidden = YES;
             self.mj_footer.hidden = YES;
         }
@@ -208,7 +213,6 @@ static const void * kTotalCountKey = &kTotalCountKey;
                 //空数据
                 self.mj_header.hidden = YES;
                 self.mj_footer.hidden = YES;
-                
             }else{
                 self.mj_header.hidden = NO;
                 self.mj_footer.hidden = NO;
