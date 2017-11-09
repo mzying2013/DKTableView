@@ -18,6 +18,7 @@
 		A9AE8A5D1FB437C8002F0F54 /* UITableView+DKPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */; };
 		A9AE8A601FB43AAA002F0F54 /* DKEmptyDataSetImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A5F1FB43AAA002F0F54 /* DKEmptyDataSetImplement.m */; };
 		A9AE8A631FB441E7002F0F54 /* DKWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A611FB441E7002F0F54 /* DKWeakObjectContainer.m */; };
+		A9AE8A661FB4447F002F0F54 /* DKBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A651FB4447F002F0F54 /* DKBaseTableViewController.m */; };
 		CC5A69D3C4DC4E85FF23375B /* Pods_DKTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,9 @@
 		A9AE8A5F1FB43AAA002F0F54 /* DKEmptyDataSetImplement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKEmptyDataSetImplement.m; sourceTree = "<group>"; };
 		A9AE8A611FB441E7002F0F54 /* DKWeakObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKWeakObjectContainer.m; sourceTree = "<group>"; };
 		A9AE8A621FB441E7002F0F54 /* DKWeakObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKWeakObjectContainer.h; sourceTree = "<group>"; };
+		A9AE8A641FB4447F002F0F54 /* DKBaseTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKBaseTableViewController.h; sourceTree = "<group>"; };
+		A9AE8A651FB4447F002F0F54 /* DKBaseTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKBaseTableViewController.m; sourceTree = "<group>"; };
+		A9AE8A671FB44565002F0F54 /* DKTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewHeader.h; sourceTree = "<group>"; };
 		CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -136,6 +140,8 @@
 				A90F9EFC1FB1636300C26AC0 /* Network */,
 				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
 				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
+				A9AE8A641FB4447F002F0F54 /* DKBaseTableViewController.h */,
+				A9AE8A651FB4447F002F0F54 /* DKBaseTableViewController.m */,
 				A96DEDCB1FAFF0F200D45610 /* ViewController.h */,
 				A96DEDCC1FAFF0F200D45610 /* ViewController.m */,
 				A96DEDD11FAFF0F200D45610 /* Assets.xcassets */,
@@ -158,6 +164,7 @@
 		A9AE8A5A1FB4370B002F0F54 /* DKTableView */ = {
 			isa = PBXGroup;
 			children = (
+				A9AE8A671FB44565002F0F54 /* DKTableViewHeader.h */,
 				A9AE8A5B1FB437C8002F0F54 /* UITableView+DKPage.h */,
 				A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */,
 				A9AE8A5E1FB43AAA002F0F54 /* DKEmptyDataSetImplement.h */,
@@ -392,6 +399,7 @@
 				A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */,
 				A90F9EFF1FB1637800C26AC0 /* DKNetwork.m in Sources */,
 				A9AE8A5D1FB437C8002F0F54 /* UITableView+DKPage.m in Sources */,
+				A9AE8A661FB4447F002F0F54 /* DKBaseTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

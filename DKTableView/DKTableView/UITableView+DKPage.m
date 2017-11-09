@@ -32,7 +32,6 @@ static const void * kTotalCountKey = &kTotalCountKey;
     return [totalCount integerValue];
 }
 
-
 /**
  私有方法，存储cell的数量
  
