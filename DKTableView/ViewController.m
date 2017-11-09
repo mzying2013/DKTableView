@@ -135,7 +135,7 @@ static NSString * const kCellID = @"kCellID";
     __weak typeof(self) weakOfSelf = self;
     
     [[DKNetwork share] top250:self.tableView.dk_pageIndex count:10 completed:^(NSArray *subjects) {
-        if ([weakOfSelf.tableView.mj_footer isRefreshing] || !subjects) {
+        if (!subjects) {
             weakOfSelf.tableView.dk_activeStatus = DKErrorActiveStatus;
             [weakOfSelf.tableView reloadData];
             return;
