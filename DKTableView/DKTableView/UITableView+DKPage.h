@@ -1,8 +1,8 @@
 //
-//  UITableView+DKCategory.h
+//  UITableView+DKPage.h
 //  DKTableView
 //
-//  Created by bill on 2017/11/6.
+//  Created by bill on 2017/11/9.
 //  Copyright © 2017年 bill. All rights reserved.
 //
 
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKDefaultActiveStatus = 0,
     DKLoadingActiveStatus,
     DKSuccessActiveStatus,
-    DKErrorActiveStatus    
+    DKErrorActiveStatus
 };
 
 
@@ -65,25 +65,13 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
 -(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView;
 
 
-
-
 @end
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-@interface UITableView (DKCategory)
+@interface UITableView (DKPage)
 /**
  活跃状态，默认为DKDefaultActiveStatus
  */
@@ -117,8 +105,6 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
  是否是初始化加载
  */
 @property (nonatomic,assign,readonly) BOOL dk_isInitLoading;
-
-
 
 
 @end

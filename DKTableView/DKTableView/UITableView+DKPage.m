@@ -1,12 +1,12 @@
 //
-//  UITableView+DKCategory.m
+//  UITableView+DKPage.m
 //  DKTableView
 //
-//  Created by bill on 2017/11/6.
+//  Created by bill on 2017/11/9.
 //  Copyright © 2017年 bill. All rights reserved.
 //
 
-#import "UITableView+DKCategory.h"
+#import "UITableView+DKPage.h"
 #import "DKWeakObjectContainer.h"
 #import <objc/runtime.h>
 
@@ -17,14 +17,14 @@ static const void * kActiveStatusKey = &kActiveStatusKey;
 static const void * kPageIndexKey = &kPageIndexKey;
 static const void * kTotalCountKey = &kTotalCountKey;
 
+@implementation UITableView (DKPage)
 
 
-@implementation UITableView (DKCategory)
 
 #pragma mark - Private Property Method
 /**
  私有方法，返回存储的cell数量
-
+ 
  @return cell数量
  */
 -(NSInteger)private_dk_totalCount{
@@ -35,7 +35,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 /**
  私有方法，存储cell的数量
-
+ 
  @param private_dk_totalCount cell的数量
  */
 -(void)setPrivate_dk_totalCount:(NSInteger)private_dk_totalCount{
@@ -232,7 +232,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 /**
  私有方法，当前tableView cell的数量
-
+ 
  @return cell的数量
  */
 -(NSInteger)private_dk_currentTotalCount{
@@ -256,7 +256,7 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 /**
  私有方法，分页索引初始值
-
+ 
  @return 索引初始值
  */
 -(NSInteger)private_dk_pageIndexInitialValue{
@@ -300,9 +300,6 @@ static const void * kTotalCountKey = &kTotalCountKey;
     }
     return NO;
 }
-    
-
-
 
 
 @end
