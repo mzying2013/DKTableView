@@ -22,7 +22,8 @@ static NSString * const kCellID = @"kCellID";
     NSArray * _statusText;
 }
 @property (nonatomic,strong) UITableView * dkTableView;
-@property (nonatomic,strong) NSArray<NSDictionary *> * dataSouces;
+@property (nonatomic,strong) NSArray<NSDictionary *> * dkDataSouces;
+@property (nonatomic,weak) MBProgressHUD * base_loadingHUD;
 
 @end
 
@@ -54,6 +55,10 @@ static NSString * const kCellID = @"kCellID";
     
     self.dkTableView.emptyDataSetSource = self;
     self.dkTableView.emptyDataSetDelegate = self;
+    
+    self.dkTableView.estimatedRowHeight = 0;
+    self.dkTableView.estimatedSectionHeaderHeight = 0;
+    self.dkTableView.estimatedSectionFooterHeight = 0;
     
     self.dkTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.dkTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
@@ -87,24 +92,23 @@ static NSString * const kCellID = @"kCellID";
 
 
 #pragma mark - Property Method
--(NSArray<NSDictionary *> *)dataSouces{
-    if (!_dataSouces) {
-        _dataSouces = [NSArray array];
+-(NSArray<NSDictionary *> *)dkDataSouces{
+    if (!_dkDataSouces) {
+        _dkDataSouces = [NSArray array];
     }
-    return _dataSouces;
+    return _dkDataSouces;
 }
-
 
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataSouces.count;
+    return self.dkDataSouces.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:kCellID];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    NSString * name = self.dataSouces[indexPath.row][@"title"];
+    NSString * name = self.dkDataSouces[indexPath.row][@"title"];
     NSString * text = [NSString stringWithFormat:@"%ld.%@",(long)indexPath.row + 1,name];
     cell.textLabel.text = text;
     return cell;
@@ -150,13 +154,17 @@ static NSString * const kCellID = @"kCellID";
 
 
 - (UIView *)customViewForEmptyDataSet:(UIScrollView *)scrollView{
+    NSLog(@"dk active status: %ld",self.dkTableView.dk_activeStatus);
+    
     if (self.dkTableView.dk_isInitLoading) {
-        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
-        hud.label.text = @"Loading...";
-        hud.bezelView.color = [UIColor whiteColor];
-        return hud;
+        self.base_loadingHUD = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
+        self.base_loadingHUD.label.text = @"Loading...";
+        self.base_loadingHUD.bezelView.color = scrollView.backgroundColor;
+        return self.base_loadingHUD;
     }else{
-        [MBProgressHUD hideHUDForView:scrollView animated:YES];
+        if (self.base_loadingHUD) {
+            [self.base_loadingHUD hideAnimated:YES];
+        }
         return nil;
     }
 }
@@ -169,17 +177,25 @@ static NSString * const kCellID = @"kCellID";
 }
 
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView{
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        if(((UITableView *)scrollView).dk_activeStatus == DKLoadingActiveStatus){
+            return NO;
+        }
+    }
     return YES;
 }
 
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView{
-    return YES;
+    return NO;
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
-    self.dkTableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self.dkTableView reloadEmptyDataSet];
-    [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        UITableView * tableView = (UITableView *)scrollView;
+        tableView.dk_activeStatus = DKLoadingActiveStatus;
+        [tableView reloadEmptyDataSet];
+        [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+    }
 }
 
 
@@ -196,9 +212,10 @@ static NSString * const kCellID = @"kCellID";
 
 
 -(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView{
-    MJRefreshAutoFooter * footer = [MJRefreshAutoFooter footerWithRefreshingTarget:self
-                                                                  refreshingAction:@selector(footerRefreshAction)];
-    
+    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
+                                                                        refreshingAction:@selector(footerRefreshAction)];
+    [footer setTitle:@"正在加载更多" forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
     return footer;
 }
 
@@ -220,13 +237,14 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - UIControl Action
 -(void)rightBtnItemAction{
-    if(_currentStatusIndex + 1 == _status.count){
-        _currentStatusIndex = 0;
-    }else{
-        _currentStatusIndex += 1;
-    }
-    self.dkTableView.dk_activeStatus = [_status[_currentStatusIndex] integerValue];
-    [self.dkTableView reloadEmptyDataSet];
+//    if(_currentStatusIndex + 1 == _status.count){
+//        _currentStatusIndex = 0;
+//    }else{
+//        _currentStatusIndex += 1;
+//    }
+//    self.dkTableView.dk_activeStatus = [_status[_currentStatusIndex] integerValue];
+//    [self.dkTableView reloadEmptyDataSet];
+    
 }
 
 
@@ -255,18 +273,19 @@ static NSString * const kCellID = @"kCellID";
             return;
         }
         
-        if (subjects.count == 0) {
+        if ([weakOfSelf.dkTableView.mj_header isRefreshing] || subjects.count == 0) {
+            weakOfSelf.dkDataSouces = @[];
             weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
             [weakOfSelf.dkTableView reloadData];
             return;
         }
         
         if ([weakOfSelf.dkTableView.mj_header isRefreshing]) {
-            weakOfSelf.dataSouces = subjects;
+            weakOfSelf.dkDataSouces = subjects;
         }else{
-            NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dataSouces];
+            NSMutableArray * _tempMArray = [NSMutableArray arrayWithArray:weakOfSelf.dkDataSouces];
             [_tempMArray addObjectsFromArray:subjects];
-            weakOfSelf.dataSouces = [_tempMArray copy];
+            weakOfSelf.dkDataSouces = [_tempMArray copy];
         }
         
         weakOfSelf.dkTableView.dk_activeStatus = DKSuccessActiveStatus;
