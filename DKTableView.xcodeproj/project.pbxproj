@@ -15,9 +15,9 @@
 		A96DEDD51FAFF0F200D45610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A96DEDD31FAFF0F200D45610 /* LaunchScreen.storyboard */; };
 		A96DEDD81FAFF0F200D45610 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDD71FAFF0F200D45610 /* main.m */; };
 		A96DEDE21FAFF0F200D45610 /* DKTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */; };
-		A971F70B1FB0587C00A8D8A7 /* DKWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F70A1FB0587C00A8D8A7 /* DKWeakObjectContainer.m */; };
 		A9AE8A5D1FB437C8002F0F54 /* UITableView+DKPage.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */; };
 		A9AE8A601FB43AAA002F0F54 /* DKEmptyDataSetImplement.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A5F1FB43AAA002F0F54 /* DKEmptyDataSetImplement.m */; };
+		A9AE8A631FB441E7002F0F54 /* DKWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9AE8A611FB441E7002F0F54 /* DKWeakObjectContainer.m */; };
 		CC5A69D3C4DC4E85FF23375B /* Pods_DKTableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,12 +51,12 @@
 		A96DEDDD1FAFF0F200D45610 /* DKTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DKTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDE11FAFF0F200D45610 /* DKTableViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKTableViewTests.m; sourceTree = "<group>"; };
 		A96DEDE31FAFF0F200D45610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A971F7091FB0587C00A8D8A7 /* DKWeakObjectContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKWeakObjectContainer.h; sourceTree = "<group>"; };
-		A971F70A1FB0587C00A8D8A7 /* DKWeakObjectContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKWeakObjectContainer.m; sourceTree = "<group>"; };
 		A9AE8A5B1FB437C8002F0F54 /* UITableView+DKPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+DKPage.h"; sourceTree = "<group>"; };
 		A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+DKPage.m"; sourceTree = "<group>"; };
 		A9AE8A5E1FB43AAA002F0F54 /* DKEmptyDataSetImplement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKEmptyDataSetImplement.h; sourceTree = "<group>"; };
 		A9AE8A5F1FB43AAA002F0F54 /* DKEmptyDataSetImplement.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKEmptyDataSetImplement.m; sourceTree = "<group>"; };
+		A9AE8A611FB441E7002F0F54 /* DKWeakObjectContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKWeakObjectContainer.m; sourceTree = "<group>"; };
+		A9AE8A621FB441E7002F0F54 /* DKWeakObjectContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKWeakObjectContainer.h; sourceTree = "<group>"; };
 		CF718D9F16FDEBF3685DDCD5 /* Pods_DKTableView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DKTableView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -134,8 +134,6 @@
 			children = (
 				A9AE8A5A1FB4370B002F0F54 /* DKTableView */,
 				A90F9EFC1FB1636300C26AC0 /* Network */,
-				A971F7091FB0587C00A8D8A7 /* DKWeakObjectContainer.h */,
-				A971F70A1FB0587C00A8D8A7 /* DKWeakObjectContainer.m */,
 				A96DEDC81FAFF0F200D45610 /* AppDelegate.h */,
 				A96DEDC91FAFF0F200D45610 /* AppDelegate.m */,
 				A96DEDCB1FAFF0F200D45610 /* ViewController.h */,
@@ -164,6 +162,8 @@
 				A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */,
 				A9AE8A5E1FB43AAA002F0F54 /* DKEmptyDataSetImplement.h */,
 				A9AE8A5F1FB43AAA002F0F54 /* DKEmptyDataSetImplement.m */,
+				A9AE8A621FB441E7002F0F54 /* DKWeakObjectContainer.h */,
+				A9AE8A611FB441E7002F0F54 /* DKWeakObjectContainer.m */,
 			);
 			path = DKTableView;
 			sourceTree = "<group>";
@@ -387,8 +387,8 @@
 			files = (
 				A96DEDCD1FAFF0F200D45610 /* ViewController.m in Sources */,
 				A96DEDD81FAFF0F200D45610 /* main.m in Sources */,
+				A9AE8A631FB441E7002F0F54 /* DKWeakObjectContainer.m in Sources */,
 				A9AE8A601FB43AAA002F0F54 /* DKEmptyDataSetImplement.m in Sources */,
-				A971F70B1FB0587C00A8D8A7 /* DKWeakObjectContainer.m in Sources */,
 				A96DEDCA1FAFF0F200D45610 /* AppDelegate.m in Sources */,
 				A90F9EFF1FB1637800C26AC0 /* DKNetwork.m in Sources */,
 				A9AE8A5D1FB437C8002F0F54 /* UITableView+DKPage.m in Sources */,
