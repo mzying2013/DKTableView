@@ -8,9 +8,10 @@
 
 #import "DKBaseTableViewController.h"
 
-@interface DKBaseTableViewController ()<DKTableViewDelegate>
+@interface DKBaseTableViewController ()<DKTableViewPageDelegate>
 @property (nonatomic,strong) UITableView * base_tableView;
 @property (nonatomic,strong) DKEmptyDataSetImplement * base_emptyDataSetImp;
+@property (nonatomic,strong) DKTableViewRefreshImplement * base_refreshImp;
 
 @end
 
@@ -42,7 +43,9 @@
     if (!_base_tableView) {
         _base_tableView = [[UITableView alloc] init];
         
-        _base_tableView.dk_delegate = self;
+        _base_tableView.dk_pageDelegate = self;
+        _base_tableView.dk_refreshDelegate = self.base_refreshImp;
+        
         _base_tableView.dk_enableHeaderRefresh = YES;
         _base_tableView.dk_enableFooterRefresh = YES;
         
@@ -68,8 +71,21 @@
 }
 
 
+-(DKTableViewRefreshImplement *)base_refreshImp{
+    if (!_base_refreshImp) {
+        _base_refreshImp = [DKTableViewRefreshImplement new];
+    }
+    return _base_refreshImp;
+}
+
+
 -(DKEmptyDataSetImplement *)emptyDataSetImp{
     return self.base_emptyDataSetImp;
+}
+
+
+-(DKTableViewRefreshImplement *)refreshImp{
+    return self.base_refreshImp;
 }
 
 
@@ -78,26 +94,7 @@
 }
 
 
-#pragma mark - DKTableViewDelegate
--(MJRefreshHeader *)dk_headerRefresh:(UITableView *)tableView{
-    MJRefreshNormalHeader * header = [MJRefreshNormalHeader headerWithRefreshingTarget:self
-                                                                      refreshingAction:@selector(headerRefreshAction)];
-    header.automaticallyChangeAlpha = YES;
-    header.lastUpdatedTimeLabel.hidden = YES;
-    header.stateLabel.hidden = YES;
-    return header;
-}
-
-
--(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView{
-    MJRefreshAutoNormalFooter * footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self
-                                                                              refreshingAction:@selector(footerRefreshAction)];
-    [footer setTitle:@"正在加载更多" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
-    return footer;
-}
-
-
+#pragma mark - DKTableViewPageDelegate
 -(NSInteger)dk_pageIndexInitialValue{
     return 0;
 }
@@ -106,18 +103,6 @@
 -(NSInteger)dk_pageCountValue{
     return 10;
 }
-
-
-#pragma mark - Public Method
--(void)headerRefreshAction{
-    
-}
-
-
--(void)footerRefreshAction{
-    
-}
-
 
 
 

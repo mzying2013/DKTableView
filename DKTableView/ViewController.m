@@ -16,7 +16,7 @@
 
 static NSString * const kCellID = @"kCellID";
 
-@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKEmptyDataSetDelegate>{
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKEmptyDataSetDelegate,DKTableViewRefreshActionDelegate>{
     NSInteger _currentStatusIndex;
     NSArray * _statusText;
 }
@@ -45,6 +45,7 @@ static NSString * const kCellID = @"kCellID";
     self.tableView.dk_enableHeaderRefresh = YES;
     self.tableView.dk_enableFooterRefresh = YES;
     self.emptyDataSetImp.delegate = self;
+    self.refreshImp.delegate = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellID];
     
     [self.view addSubview:self.tableView];
@@ -107,23 +108,15 @@ static NSString * const kCellID = @"kCellID";
 }
 
 
-#pragma mark - DKTableViewDelegate
-//-(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status{
-//    self.navigationItem.title = _statusText[status];
-//}
 
-
-
-#pragma mark - Refresh Action
--(void)headerRefreshAction{
-    [super headerRefreshAction];
+#pragma mark - DKTableViewRefreshActionDelegate
+-(void)tableView:(UITableView *)tableView headerRefreshAction:(MJRefreshHeader *)header{
     self.tableView.dk_activeStatus = DKLoadingActiveStatus;
     [self.tableView reloadEmptyDataSet];
     [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
 }
 
--(void)footerRefreshAction{
-    [super footerRefreshAction];
+-(void)tableView:(UITableView *)tableView footerRefreshAction:(MJRefreshFooter *)footer{
     self.tableView.dk_activeStatus = DKLoadingActiveStatus;
     [self.tableView reloadEmptyDataSet];
     [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];

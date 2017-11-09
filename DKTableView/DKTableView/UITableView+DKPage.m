@@ -12,7 +12,8 @@
 
 
 
-static const void * kWeakObjectContainerKey = &kWeakObjectContainerKey;
+static const void * kPageWeakObjectContainerKey = &kPageWeakObjectContainerKey;
+static const void * kRefreshWeakObjectContainerKey = &kRefreshWeakObjectContainerKey;
 static const void * kActiveStatusKey = &kActiveStatusKey;
 static const void * kPageIndexKey = &kPageIndexKey;
 static const void * kTotalCountKey = &kTotalCountKey;
@@ -44,19 +45,36 @@ static const void * kTotalCountKey = &kTotalCountKey;
 
 
 #pragma mark - Public Property Method
-- (id<DKTableViewDelegate>)dk_delegate{
-    DKWeakObjectContainer *container = objc_getAssociatedObject(self,kWeakObjectContainerKey);
+- (id<DKTableViewPageDelegate>)dk_pageDelegate{
+    DKWeakObjectContainer *container = objc_getAssociatedObject(self,kPageWeakObjectContainerKey);
     return container.weakObject;
 }
 
 
--(void)setDk_delegate:(id<DKTableViewDelegate>)dk_delegate{
-    id weakObjectContainer = [[DKWeakObjectContainer alloc] initWithWeakObject:dk_delegate];
+-(void)setDk_pageDelegate:(id<DKTableViewPageDelegate>)dk_pageDelegate{
+    id weakObjectContainer = [[DKWeakObjectContainer alloc] initWithWeakObject:dk_pageDelegate];
     objc_setAssociatedObject(self,
-                             kWeakObjectContainerKey,
+                             kPageWeakObjectContainerKey,
                              weakObjectContainer,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+
+
+-(id<DKTableViewRefreshDelegate>)dk_refreshDelegate{
+    DKWeakObjectContainer * container = objc_getAssociatedObject(self, kRefreshWeakObjectContainerKey);
+    return container.weakObject;
+}
+
+
+-(void)setDk_refreshDelegate:(id<DKTableViewRefreshDelegate>)dk_refreshDelegate{
+    id weakObjectContainer = [[DKWeakObjectContainer alloc] initWithWeakObject:dk_refreshDelegate];
+    objc_setAssociatedObject(self,
+                             kRefreshWeakObjectContainerKey,
+                             weakObjectContainer,
+                             OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 
 -(DKActiveStatus)dk_activeStatus{
@@ -70,8 +88,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
     
     [self private_dk_activeStatusHandler:dk_activeStatus];
     
-    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_tableView:activeStatusDidUpdate:)]) {
-        [self.dk_delegate dk_tableView:self activeStatusDidUpdate:self.dk_activeStatus];
+    if (self.dk_pageDelegate && [self.dk_pageDelegate respondsToSelector:@selector(dk_tableView:activeStatusDidUpdate:)]) {
+        [self.dk_pageDelegate dk_tableView:self activeStatusDidUpdate:self.dk_activeStatus];
     }
 }
 
@@ -99,8 +117,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
 -(void)setDk_enableHeaderRefresh:(BOOL)dk_enableHeaderRefresh{
     if (dk_enableHeaderRefresh) {
         if (!self.mj_header) {
-            if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_headerRefresh:)]) {
-                self.mj_header = [self.dk_delegate dk_headerRefresh:self];
+            if (self.dk_refreshDelegate && [self.dk_refreshDelegate respondsToSelector:@selector(dk_headerRefresh:)]) {
+                self.mj_header = [self.dk_refreshDelegate dk_headerRefresh:self];
                 self.mj_header.hidden = YES;
             }
         }
@@ -124,8 +142,8 @@ static const void * kTotalCountKey = &kTotalCountKey;
 -(void)setDk_enableFooterRefresh:(BOOL)dk_enableFooterRefresh{
     if (dk_enableFooterRefresh) {
         if (!self.mj_footer) {
-            if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_footerRefresh:)]) {
-                self.mj_footer = [self.dk_delegate dk_footerRefresh:self];
+            if (self.dk_refreshDelegate && [self.dk_refreshDelegate respondsToSelector:@selector(dk_footerRefresh:)]) {
+                self.mj_footer = [self.dk_refreshDelegate dk_footerRefresh:self];
                 self.mj_footer.hidden = YES;
             }
         }
@@ -259,16 +277,16 @@ static const void * kTotalCountKey = &kTotalCountKey;
  @return 索引初始值
  */
 -(NSInteger)private_dk_pageIndexInitialValue{
-    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_pageIndexInitialValue)]) {
-        return [self.dk_delegate dk_pageIndexInitialValue];
+    if (self.dk_pageDelegate && [self.dk_pageDelegate respondsToSelector:@selector(dk_pageIndexInitialValue)]) {
+        return [self.dk_pageDelegate dk_pageIndexInitialValue];
     }
     return 0;
 }
 
 
 -(NSInteger)private_dk_pageCountValue{
-    if (self.dk_delegate && [self.dk_delegate respondsToSelector:@selector(dk_pageCountValue)]) {
-        return [self.dk_delegate dk_pageCountValue];
+    if (self.dk_pageDelegate && [self.dk_pageDelegate respondsToSelector:@selector(dk_pageCountValue)]) {
+        return [self.dk_pageDelegate dk_pageCountValue];
     }
     return 10;
 }

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MJRefresh/MJRefresh.h>
-@protocol DKTableViewDelegate;
 
 
 typedef NS_ENUM(NSInteger,DKActiveStatus){
@@ -21,11 +20,29 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
 
 
 
+@protocol  DKTableViewRefreshDelegate<NSObject>
+/**
+ header刷新组件
+ 
+ @param tableView 当前的tableView
+ @return header刷新组件
+ */
+-(MJRefreshHeader *)dk_headerRefresh:(UITableView *)tableView;
 
 
-@protocol DKTableViewDelegate <NSObject>
+/**
+ footer刷新组件
+ 
+ @param tableView 当前的tableView
+ @return footer刷新组件
+ */
+-(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView;
+
+@end
 
 
+
+@protocol DKTableViewPageDelegate<NSObject>
 @optional
 /**
  分页初始值，默认0
@@ -46,23 +63,6 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
  */
 -(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status;
 
-
-/**
- header刷新组件
- 
- @param tableView 当前的tableView
- @return header刷新组件
- */
--(MJRefreshHeader *)dk_headerRefresh:(UITableView *)tableView;
-
-
-/**
- footer刷新组件
- 
- @param tableView 当前的tableView
- @return footer刷新组件
- */
--(MJRefreshFooter *)dk_footerRefresh:(UITableView *)tableView;
 
 
 @end
@@ -86,7 +86,8 @@ typedef NS_ENUM(NSInteger,DKActiveStatus){
 /**
  Delegat回调
  */
-@property (nonatomic,weak) id<DKTableViewDelegate> dk_delegate;
+@property (nonatomic,weak) id<DKTableViewPageDelegate> dk_pageDelegate;
+@property (nonatomic,weak) id<DKTableViewRefreshDelegate> dk_refreshDelegate;
 
 
 /**
