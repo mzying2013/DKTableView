@@ -17,7 +17,6 @@
 static NSString * const kCellID = @"kCellID";
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,DKTableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
-    NSArray * _status;
     NSInteger _currentStatusIndex;
     NSArray * _statusText;
 }
@@ -34,8 +33,6 @@ static NSString * const kCellID = @"kCellID";
     self = [super init];
     
     if (self) {
-        _status = @[@(DKDefaultActiveStatus),@(DKLoadingActiveStatus)
-                    ,@(DKSuccessActiveStatus),@(DKErrorActiveStatus)];
         _statusText = @[@"DKDefaultActiveStatus",@"DKLoadingActiveStatus",
                         @"DKSuccessActiveStatus",@"DKErrorActiveStatus"];
     }
