@@ -42,6 +42,7 @@
 		8DBD91384B4A7D20821C235F /* Pods-DKTableViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DKTableViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DKTableViewTests/Pods-DKTableViewTests.release.xcconfig"; sourceTree = "<group>"; };
 		A90F9EFD1FB1637800C26AC0 /* DKNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKNetwork.h; sourceTree = "<group>"; };
 		A90F9EFE1FB1637800C26AC0 /* DKNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKNetwork.m; sourceTree = "<group>"; };
+		A933FB4B1FB535C800451734 /* DKTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKTableViewDelegate.h; sourceTree = "<group>"; };
 		A96DEDC51FAFF0F200D45610 /* DKTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96DEDC81FAFF0F200D45610 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A96DEDC91FAFF0F200D45610 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -171,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A9AE8A671FB44565002F0F54 /* DKTableViewHeader.h */,
+				A933FB4B1FB535C800451734 /* DKTableViewDelegate.h */,
 				A9AE8A5B1FB437C8002F0F54 /* UITableView+DKPage.h */,
 				A9AE8A5C1FB437C8002F0F54 /* UITableView+DKPage.m */,
 				A9AE8A5E1FB43AAA002F0F54 /* DKEmptyDataSetImplement.h */,

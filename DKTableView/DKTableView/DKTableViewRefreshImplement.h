@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UITableView+DKPage.h"
+#import "DKTableViewDelegate.h"
 
 
 @protocol DKTableViewRefreshActionDelegate<NSObject>

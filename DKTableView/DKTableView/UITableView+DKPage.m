@@ -9,7 +9,7 @@
 #import "UITableView+DKPage.h"
 #import "DKWeakObjectContainer.h"
 #import <objc/runtime.h>
-
+#import <MJRefresh/MJRefresh.h>
 
 
 static const void * kPageWeakObjectContainerKey = &kPageWeakObjectContainerKey;
