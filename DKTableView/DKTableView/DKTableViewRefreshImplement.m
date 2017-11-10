@@ -8,6 +8,7 @@
 
 #import "DKTableViewRefreshImplement.h"
 #import "DKTableViewStyle.h"
+#import "UITableView+DKPage.h"
 
 @interface DKTableViewRefreshImplement(){
     __weak UITableView * weakTableView;
@@ -44,6 +45,8 @@
 
 
 -(void)headerRefreshAction:(MJRefreshHeader *)sender{
+    weakTableView.dk_activeStatus = DKLoadingActiveStatus;
+    [weakTableView reloadEmptyDataSet];
     if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:headerRefreshAction:)]) {
         [self.delegate tableView:weakTableView headerRefreshAction:sender];
     }
@@ -51,6 +54,8 @@
 
 
 -(void)footerRefreshAction:(MJRefreshFooter *)sender{
+    weakTableView.dk_activeStatus = DKLoadingActiveStatus;
+    [weakTableView reloadEmptyDataSet];
     if (self.delegate && [self.delegate respondsToSelector:@selector(tableView:footerRefreshAction:)]) {
         [self.delegate tableView:weakTableView footerRefreshAction:sender];
     }

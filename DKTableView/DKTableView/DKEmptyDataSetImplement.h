@@ -11,7 +11,7 @@
 
 
 @protocol DKEmptyDataSetDelegate<NSObject>
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view;
+- (void)emptyDataSet:(UITableView *)tableView didTapView:(UIView *)view;
 
 @end
 

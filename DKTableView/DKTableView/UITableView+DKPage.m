@@ -238,6 +238,12 @@ static const void * kTotalCountKey = &kTotalCountKey;
             }else{
                 self.mj_header.hidden = NO;
                 self.mj_footer.hidden = NO;
+                BOOL noMore = [self private_dk_currentTotalCount] < [self private_dk_pageCountValue];
+                if (noMore) {
+                    [self.mj_footer endRefreshingWithNoMoreData];
+                }else{
+                    [self.mj_footer resetNoMoreData];
+                }
             }
             
         }else if(status == DKErrorActiveStatus){

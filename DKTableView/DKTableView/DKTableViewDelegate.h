@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <MJRefresh/MJRefresh.h>
 
+
+/**
+ TableView的状态
+
+ - DKDefaultActiveStatus: 默认状态
+ - DKLoadingActiveStatus: 加载中的状态（包括点击加载，header footer加载）
+ - DKSuccessActiveStatus: 加载成功
+ - DKErrorActiveStatus: 加载失败
+ */
 typedef NS_ENUM(NSInteger,DKActiveStatus){
     DKDefaultActiveStatus = 0,
     DKLoadingActiveStatus,

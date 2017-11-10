@@ -110,8 +110,14 @@ static NSString * const kDKLoadingText = @"正在加载";
 }
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(emptyDataSet:didTapView:)]) {
-        [self.delegate emptyDataSet:scrollView didTapView:view];
+    if ([scrollView isKindOfClass:[UITableView class]]) {
+        UITableView * tableView = (UITableView *)scrollView;
+        tableView.dk_activeStatus = DKLoadingActiveStatus;
+        [tableView reloadEmptyDataSet];
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(emptyDataSet:didTapView:)]) {
+            [self.delegate emptyDataSet:tableView didTapView:view];
+        }
     }
 }
 
