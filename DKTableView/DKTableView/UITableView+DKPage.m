@@ -292,17 +292,6 @@ static const void * kTotalCountKey = &kTotalCountKey;
 }
 
 
--(void)endHeaderFooterRefreshing{
-    if (self.mj_header && [self.mj_header isRefreshing]) {
-        [self.mj_header endRefreshing];
-    }
-    
-    if (self.mj_footer && [self.mj_footer isRefreshing]) {
-        [self.mj_footer endRefreshing];
-    }
-}
-
-
 -(BOOL)headerIsRefreshing{
     if (self.mj_header && [self.mj_header isRefreshing]) {
         return YES;

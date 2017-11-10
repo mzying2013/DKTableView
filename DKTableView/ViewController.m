@@ -57,7 +57,7 @@ static NSString * const kCellID = @"kCellID";
     self.navigationItem.title = _statusText[self.tableView.dk_activeStatus];
     
     self.tableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+    [self dkRequest];
 }
 
 
@@ -103,7 +103,7 @@ static NSString * const kCellID = @"kCellID";
         UITableView * tableView = (UITableView *)scrollView;
         tableView.dk_activeStatus = DKLoadingActiveStatus;
         [tableView reloadEmptyDataSet];
-        [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+        [self dkRequest];
     }
 }
 
@@ -111,15 +111,15 @@ static NSString * const kCellID = @"kCellID";
 
 #pragma mark - DKTableViewRefreshActionDelegate
 -(void)tableView:(UITableView *)tableView headerRefreshAction:(MJRefreshHeader *)header{
-    self.tableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self.tableView reloadEmptyDataSet];
-    [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+    tableView.dk_activeStatus = DKLoadingActiveStatus;
+    [tableView reloadEmptyDataSet];
+    [self dkRequest];
 }
 
 -(void)tableView:(UITableView *)tableView footerRefreshAction:(MJRefreshFooter *)footer{
-    self.tableView.dk_activeStatus = DKLoadingActiveStatus;
-    [self.tableView reloadEmptyDataSet];
-    [self performSelector:@selector(dkRequest) withObject:nil afterDelay:2];
+    tableView.dk_activeStatus = DKLoadingActiveStatus;
+    [tableView reloadEmptyDataSet];
+    [self dkRequest];
 }
 
 
@@ -134,11 +134,11 @@ static NSString * const kCellID = @"kCellID";
             return;
         }
         
-        if (subjects.count == 0) {
-            weakOfSelf.tableView.dk_activeStatus = DKSuccessActiveStatus;
-            [weakOfSelf.tableView reloadData];
-            return;
-        }
+//        if (subjects.count == 0) {
+//            weakOfSelf.tableView.dk_activeStatus = DKSuccessActiveStatus;
+//            [weakOfSelf.tableView reloadData];
+//            return;
+//        }
         
         if ([weakOfSelf.tableView.mj_header isRefreshing]) {
             weakOfSelf.dkDataSouces = subjects;

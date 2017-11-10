@@ -9,7 +9,7 @@
 #import "DKEmptyDataSetImplement.h"
 #import "UITableView+DKPage.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-
+#import "DKTableViewStyle.h"
 
 static NSString * const kDKErrorImageName = @"common_404";
 static NSString * const kDKEmptyImageName = @"no_data";
@@ -51,8 +51,6 @@ static NSString * const kDKLoadingText = @"正在加载";
             text = kDKEmptyTitle;
         }
         
-        UIColor *textColor = [UIColor colorWithRed:125/255.0 green:127/255.0 blue:127/255.0 alpha:1.0];
-        
         NSMutableDictionary *attributes = [NSMutableDictionary new];
         
         NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
@@ -60,11 +58,11 @@ static NSString * const kDKLoadingText = @"正在加载";
         paragraph.alignment = NSTextAlignmentCenter;
         paragraph.lineSpacing = 2.0;
         
-        [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
+        [attributes setObject:[DKTableViewStyle share].textColor forKey:NSForegroundColorAttributeName];
         [attributes setObject:paragraph forKey:NSParagraphStyleAttributeName];
-        [attributes setObject:[UIFont systemFontOfSize:14] forKey:NSFontAttributeName];
+        [attributes setObject:[DKTableViewStyle share].font forKey:NSFontAttributeName];
         
-        return [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
+        return [[NSMutableAttributedString alloc] initWithString:text attributes:[attributes copy]];
     }
     return nil;
 }
@@ -77,9 +75,8 @@ static NSString * const kDKLoadingText = @"正在加载";
         if (tableView.dk_isInitLoading) {
             dk_loadingHUD = [MBProgressHUD showHUDAddedTo:scrollView animated:YES];
             dk_loadingHUD.label.text = kDKLoadingText;
-            dk_loadingHUD.label.font = [UIFont systemFontOfSize:14];
-            UIColor *textColor = [UIColor colorWithRed:125/255.0 green:127/255.0 blue:127/255.0 alpha:1.0];
-            dk_loadingHUD.label.textColor = textColor;
+            dk_loadingHUD.label.font = [DKTableViewStyle share].font;
+            dk_loadingHUD.label.textColor = [DKTableViewStyle share].textColor;
             dk_loadingHUD.bezelView.color = scrollView.backgroundColor;
             return dk_loadingHUD;
         }else{

@@ -105,5 +105,9 @@
 }
 
 
+-(void)dk_tableView:(UITableView *)tableView activeStatusDidUpdate:(DKActiveStatus)status{
+    NSLog(@"did update active status:%ld",status);
+}
+
 
 @end

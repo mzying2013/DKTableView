@@ -7,7 +7,7 @@
 //
 
 #import "DKTableViewRefreshImplement.h"
-
+#import "DKTableViewStyle.h"
 
 @interface DKTableViewRefreshImplement(){
     __weak UITableView * weakTableView;
@@ -25,6 +25,8 @@
     header.automaticallyChangeAlpha = YES;
     header.lastUpdatedTimeLabel.hidden = YES;
     header.stateLabel.hidden = YES;
+    header.stateLabel.font = [DKTableViewStyle share].font;
+    header.stateLabel.textColor = [DKTableViewStyle share].textColor;
     return header;
 }
 
@@ -35,6 +37,8 @@
                                                                               refreshingAction:@selector(footerRefreshAction:)];
     [footer setTitle:@"正在加载更多" forState:MJRefreshStateRefreshing];
     [footer setTitle:@"上拉加载更多" forState:MJRefreshStateIdle];
+    footer.stateLabel.font = [DKTableViewStyle share].font;
+    footer.stateLabel.textColor = [DKTableViewStyle share].textColor;
     return footer;
 }
 
